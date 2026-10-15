@@ -36,13 +36,16 @@ written for the real CLARA screen captures, rather than from the particle moment
 
 from __future__ import annotations
 
+import time
 from dataclasses import dataclass, field
 
 import numpy as np
+import torch
 
 from config import MBRLConfig
 from knobs import KnobSet
-from planner import TRANSMISSION_WEIGHT, Planner
+from planner import TRANSMISSION_WEIGHT, Planner, _pseudo_inverse
+from features import expert_action, observe, pad_action
 from screen import measure
 from system_id import Shot, SystemID
 from twin import CheetahTwin
@@ -57,6 +60,20 @@ IMPROVEMENT = 5e-6  # m
 # leash, one that did not loses half of it.
 TRUST_GROWTH = 1.3
 TRUST_DECAY = 0.5
+# What moving the screen costs on the real machine. Only one screen may be in the
+# beam, and swapping which one takes about half a minute of mechanics — far longer
+# than the shot itself — so it is counted separately from the shot budget.
+SCREEN_SWITCH_SECONDS = 30.0
+# Roughly what one shot costs on CLARA at 10 Hz once setting and settling are
+# included. Only used to put screen time and shot time on one scale.
+SHOT_SECONDS = 1.0
+# How far the placement solve may move a corrector, in calibrated steps. Large
+# enough that only the magnet's own range binds: the readout centroid is linear in
+# these kicks and the whole job is to cross a 2 mm gap in one shot. A trust region
+# belongs on a search, and this is not one — capping it at 5 mrad left the spot
+# 1.6 mm short of a request that needed a 4.95 mrad kick the magnet could easily
+# have given. `cla_feh_mag_hvcor_01` alone reaches 12.7 mm at the screen.
+PLACEMENT_REACH = 1e4
 
 
 @dataclass
@@ -74,6 +91,10 @@ class EpisodeResult:
     steering_shots: int
     orbit_rms: float  # m, over the BPMs that were reading at the end
     valid_bpms: int
+    # The figures of merit, alongside the match itself.
+    screen_switches: int = 0  # times the beam-intercepting screen was moved
+    seconds: float = 0.0  # wall clock for the episode, model time included
+    machine_seconds: float = 0.0  # what it would have cost on CLARA
     # How well the reference optics alone did, before anything was corrected: the
     # score the pipeline would book if it stopped after stage 1.
     optics_score: float = float("nan")
@@ -84,17 +105,44 @@ class EpisodeResult:
 class MBRLAgent:
     """Reference optics, SVD steering, then a twin-planned tweak of the tune."""
 
-    def __init__(self, config: MBRLConfig | None = None, twin: CheetahTwin | None = None):
+    def __init__(
+        self,
+        config: MBRLConfig | None = None,
+        twin: CheetahTwin | None = None,
+        policy=None,
+    ):
         self.config = config or MBRLConfig()
-        self.twin = twin or CheetahTwin(num_particles=self.config.twin_particles)
-        self.identifier = SystemID(self.twin, self.config.fit_misalignments)
-        self.planner = Planner(self.twin, self.config)
+        # Built lazily from the environment unless one was handed in, so the twin
+        # is always a model of the machine actually being tuned. See
+        # `CheetahTwin.for_env`.
+        self.twin = twin
+        self.identifier = None if twin is None else SystemID(
+            twin, self.config.fit_misalignments
+        )
+        self.planner = None if twin is None else Planner(twin, self.config)
+        # The Dyna layer, if one has been trained: proposes the focus move in a
+        # millisecond where the planner takes seconds. `policy.py`.
+        self.policy = policy
         self._since_fit = 0
+        # Set True to collect behaviour-cloning data while running.
+        self.record = False
+        # Filled in during a run when `record` is on: the (observation, expert
+        # move) pairs behaviour cloning is trained from.
+        self.recorded: list[tuple[np.ndarray, np.ndarray]] = []
+
+    def _ensure_twin(self, env) -> None:
+        """Make sure there is a twin, and that it models this environment."""
+        if self.twin is None:
+            self.twin = CheetahTwin.for_env(env, self.config.twin_particles)
+            self.identifier = SystemID(self.twin, self.config.fit_misalignments)
+            self.planner = Planner(self.twin, self.config)
 
     # ---------- one episode ----------
 
     def run(self, env, seed: int | None = None, verbose: bool = False) -> EpisodeResult:
         """Tune the machine `env.reset()` deals, and report how close it got."""
+        started = time.monotonic()
+        self._ensure_twin(env)
         observation, info = env.reset(seed=seed)
         rng = np.random.default_rng(seed)
         self.identifier.reset()
@@ -108,7 +156,8 @@ class MBRLAgent:
         optics = self._load_optics(env, target, history, trace, verbose)
         steered = self._steer(env, optics, history, trace, verbose)
         self._focus(env, optics, target, history, trace, rng, verbose)
-        return self._result(history, trace, steered, optics)
+        self._place(env, target, history, trace, verbose)
+        return self._result(history, trace, steered, optics, started)
 
     # ---------- stage one: the reference optics ----------
 
@@ -220,24 +269,42 @@ class MBRLAgent:
         knobs = self._control_set(env, optics)
         values = knobs.read(env.magnet_settings())
         self._calibrate(knobs, values, target)
+        reference = values.copy()
         best_values = values.copy()
-        best_mismatch = self._mismatch(history[-1], target)
+        # Judged on what this stage is actually for. Scoring the focus on the full
+        # mismatch would have it reject a real improvement in the spot because the
+        # position — which it is not allowed to touch — happened to drift.
+        best_mismatch = _mismatch(history[-1], target, position_weight=0.0)
         best_moments = history[-1].moments if history[-1].on_screen else None
         anchor_moments = best_moments
         trust = self.config.trust_region
         explore = True
 
         for step in range(self.config.focus_shots):
-            if self._mismatch(history[-1], target) <= self.config.focus_mismatch_tolerance:
+            if (
+                _mismatch(history[-1], target, position_weight=0.0)
+                <= self.config.focus_mismatch_tolerance
+            ):
                 break
             self._identify(history, first=step == 0)
-            plan = self.planner.focus(
-                knobs, values, self.identifier.state, target,
-                anchor_moments, rng, trust=trust, explore=explore,
+            observed = self._observe(
+                history[-1], target, knobs, values, reference, trust
             )
+            proposal = self._propose(knobs, values, observed)
+            plan = self.planner.focus(
+                knobs, proposal, self.identifier.state, target,
+                anchor_moments, rng, trust=trust, explore=explore,
+                measured_at=values, position_weight=0.0,
+            )
+            if self.record:
+                self.recorded.append(
+                    (observed, expert_action(values, plan.values, knobs.scales))
+                )
             values = plan.values
             self._apply(env, knobs, values, history)
-            achieved = self._mismatch(history[-1], target, cap=UNCAPPED)
+            achieved = _mismatch(
+                history[-1], target, cap=UNCAPPED, position_weight=0.0
+            )
 
             # Trust the twin as far as it keeps being right. A step that made the
             # reading worse — above all one that threw the beam off the screen —
@@ -246,13 +313,16 @@ class MBRLAgent:
             # lost beam is unrecoverable: there is no reading left to anchor on, and
             # the planner spends the rest of the episode steering by a model it has
             # just been shown to be wrong.
-            if self._mismatch(history[-1], target) < best_mismatch:
-                best_mismatch = self._mismatch(history[-1], target)
+            size_now = _mismatch(history[-1], target, position_weight=0.0)
+            if size_now < best_mismatch:
+                stalled = 0
+                best_mismatch = size_now
                 best_values, best_moments = values.copy(), history[-1].moments
                 anchor_moments = best_moments
                 trust = min(trust * TRUST_GROWTH, self.config.trust_region)
                 explore = False
             else:
+                stalled += 1
                 values, anchor_moments = best_values.copy(), best_moments
                 self.twin.set_knob_vector(knobs.elements, knobs.props, values)
                 trust = max(trust * TRUST_DECAY, self.config.min_trust_region)
@@ -280,7 +350,7 @@ class MBRLAgent:
         # The benchmark scores the last reading, not the best one, so a tune that
         # found a good spot and wandered off books the wandering. One shot to put
         # the best setting back is cheap insurance on a machine that jitters.
-        if self._mismatch(history[-1], target) > best_mismatch:
+        if _mismatch(history[-1], target, position_weight=0.0) > best_mismatch:
             self._apply(env, knobs, best_values, history)
             trace.append({
                 "stage": "restore",
@@ -295,6 +365,32 @@ class MBRLAgent:
                     f"{self._mismatch(history[-1], target, cap=UNCAPPED):7.3f}  "
                     f"(best seen {best_mismatch:.3f})"
                 )
+
+    def _observe(self, shot, target, knobs, values, reference, trust) -> np.ndarray:
+        """What a policy would see at this point in the tune."""
+        return observe(
+            shot.moments if shot.on_screen else None,
+            target,
+            shot.transmission,
+            self._orbit_rms(shot),
+            float(shot.bpm_valid.mean()),
+            (values - reference) / np.maximum(knobs.scales, 1e-30),
+            0.0,
+            trust,
+        )
+
+    def _propose(self, knobs: KnobSet, values: np.ndarray, observed) -> np.ndarray:
+        """Where the policy thinks the knobs should go, or where they already are.
+
+        The policy is a warm start, not a replacement: the planner still refines
+        whatever it suggests, so a bad suggestion costs a little search and not the
+        shot. With no policy loaded this is the identity and the agent behaves
+        exactly as it did before there was one.
+        """
+        if self.policy is None:
+            return values
+        step = pad_action(self.policy.propose(observed), len(knobs))
+        return knobs.clip(values + step * knobs.scales)
 
     def _calibrate(self, knobs: KnobSet, values: np.ndarray, target: np.ndarray) -> None:
         """Set each knob's step to whatever moves the readout by a useful amount.
@@ -317,6 +413,62 @@ class MBRLAgent:
             np.abs(jacobian[:2]).sum(axis=0) / 2 + np.abs(jacobian[2:]).sum(axis=0) / 2
         ) / spot
         knobs.rescale(sensitivity, self.config.trust_effect)
+
+    # ---------- stage five: put the spot where it was asked for ----------
+
+    def _place(self, env, target, history, trace, verbose) -> None:
+        """One round of SVD steering onto the requested position.
+
+        The focus has matched the size and left the spot wherever the optics put it;
+        the request wants it somewhere within 2 mm of the screen centre, which is
+        most of the remaining score. The readout centroid is linear in the kicks of
+        the correctors just upstream of it, so this is a two-row least-squares solve
+        and not a search — the response comes from the twin, the error from the
+        camera, and one shot normally closes it.
+
+        It is last because these correctors move almost nothing else. Putting them
+        in the focus instead gives a quadrupole the option of fixing a position
+        error by distorting the optics, which costs the size.
+        """
+        knobs = KnobSet.from_knob_names(
+            self.config.placement_correctors, self.twin.element_types, env.magnet_limits
+        )
+        values = knobs.read(env.magnet_settings())
+        for step in range(self.config.placement_shots):
+            shot = history[-1]
+            if not shot.on_screen or shot.moments is None:
+                break
+            error = np.asarray(shot.moments[:2]) - np.asarray(target[:2])
+            jacobian, _ = self.planner.response(
+                knobs,
+                values,
+                self.identifier.state,
+                lambda r: torch.stack([r.mu_x, r.mu_y], dim=-1),
+            )
+            correction = -_pseudo_inverse(jacobian, self.config.placement_cutoff) @ error
+            low, high = knobs.trust_region(values, PLACEMENT_REACH)
+            values = np.clip(values + correction, low, high)
+            self._apply(env, knobs, values, history)
+            trace.append({
+                "stage": "place",
+                "shot": len(history) - 1,
+                "mismatch": _mismatch(history[-1], target),
+                "raw_mismatch": _mismatch(history[-1], target, cap=UNCAPPED),
+                "position_um": (
+                    None if not history[-1].on_screen
+                    else (np.asarray(history[-1].moments[:2]) * 1e6).tolist()
+                ),
+                "on_screen": history[-1].on_screen,
+            })
+            if verbose:
+                moved = np.abs(np.asarray(history[-1].moments[:2]) - target[:2]) * 1e6 \
+                    if history[-1].on_screen else None
+                print(
+                    f"  place {step:2d}   mismatch "
+                    f"{_mismatch(history[-1], target, cap=UNCAPPED):7.3f}  "
+                    + (f"position off by {moved[0]:.0f}, {moved[1]:.0f} um"
+                       if moved is not None else "LOST")
+                )
 
     # ---------- the machinery each shot shares ----------
 
@@ -375,10 +527,18 @@ class MBRLAgent:
     def _mismatch(self, shot: Shot, target: np.ndarray, cap: float = 10.0) -> float:
         return _mismatch(shot, target, cap)
 
-    def _result(self, history, trace, steering_shots, optics) -> EpisodeResult:
-        """The episode as the benchmark books it."""
+    def _result(self, history, trace, steering_shots, optics, started) -> EpisodeResult:
+        """The episode as the benchmark books it, and what it cost to get there."""
         info = history[-1].info
         last = history[-1]
+        # Every shot names the screen that was in the beam; a switch is a change
+        # between consecutive shots. This agent should never make one — all 31 BPMs
+        # sit upstream of the readout, so the beam can be steered on them without
+        # moving anything into it — and counting is how that stays true.
+        viewed = [shot.info["screen"] for shot in history if shot.info]
+        switches = sum(a != b for a, b in zip(viewed, viewed[1:]))
+        shots = int(info["evaluations"])
+        seconds = time.monotonic() - started
         optics_entry = next((e for e in trace if e["stage"] == "optics"), {})
         return EpisodeResult(
             benchmark_score=float(info["benchmark_score"]),
@@ -396,6 +556,9 @@ class MBRLAgent:
             valid_bpms=int(last.bpm_valid.sum()),
             optics_score=float(optics_entry.get("mismatch", float("nan"))),
             optics_error=float(optics.relative_error),
+            screen_switches=switches,
+            seconds=seconds,
+            machine_seconds=shots * SHOT_SECONDS + switches * SCREEN_SWITCH_SECONDS,
             trace=trace,
         )
 
@@ -409,7 +572,9 @@ def _split(name: str, twin: CheetahTwin) -> tuple[str, str]:
     return name, twin.knob_property(name)
 
 
-def _mismatch(shot: Shot, target: np.ndarray, cap: float = 10.0) -> float:
+def _mismatch(
+    shot: Shot, target: np.ndarray, cap: float = 10.0, position_weight: float = 1.0
+) -> float:
     """`SimEnv._mismatch` for a shot: how far off the request, in requested spots.
 
     Position and size against the spot that was asked for, plus `TRANSMISSION_WEIGHT`
@@ -423,11 +588,7 @@ def _mismatch(shot: Shot, target: np.ndarray, cap: float = 10.0) -> float:
     if not shot.on_screen or shot.moments is None:
         return cap
     error = np.abs(shot.moments - target) / float(target[2:].mean())
-    return float(
-        min(
-            (error[0] + error[1]) / 2
-            + (error[2] + error[3]) / 2
-            + TRANSMISSION_WEIGHT * (1.0 - shot.transmission),
-            cap,
-        )
-    )
+    total = (error[2] + error[3]) / 2 + TRANSMISSION_WEIGHT * (1.0 - shot.transmission)
+    if position_weight:
+        total += position_weight * (error[0] + error[1]) / 2
+    return float(min(total, cap))

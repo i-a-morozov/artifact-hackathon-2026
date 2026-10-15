@@ -93,13 +93,13 @@ def build(config: MBRLConfig, particles: int, variation: float, misalignment: fl
     enough to mismeasure an rms by 70 microns. At 512 the measure tracks the true
     moments to a tenth of a micron.
     """
-    twin = CheetahTwin(num_particles=config.twin_particles)
     rl = RLConfig()
     rl.num_particles = particles
     rl.beam_variation = variation
     rl.misalignment_variation = misalignment
     rl.screen_shape = config.screen_shape
-    return OpticsEnv(rl), twin
+    env = OpticsEnv(rl)
+    return env, CheetahTwin.for_env(env, config.twin_particles)
 
 
 def summarise(name: str, results: list, seconds: float) -> dict:
@@ -115,6 +115,9 @@ def summarise(name: str, results: list, seconds: float) -> dict:
         "delivered": float(np.mean([r.on_screen for r in results])),
         "transmission": float(np.mean([r.transmission for r in results])),
         "orbit_um": float(np.mean([r.orbit_rms for r in results]) * 1e6),
+        "switches": float(np.mean([r.screen_switches for r in results])),
+        "wall_s": float(np.mean([r.seconds for r in results])),
+        "machine_s": float(np.mean([r.machine_seconds for r in results])),
         "optics_mismatch": float(np.mean([r.optics_score for r in results])),
         **{f"hit_{int(t * 100)}": float((errors <= t).mean()) for t in HIT_TOLERANCES},
         "seconds": seconds,
@@ -124,16 +127,16 @@ def summarise(name: str, results: list, seconds: float) -> dict:
 
 def table(rows: list[dict]) -> str:
     header = (
-        f"{'method':<14}{'score':>8}{'median':>8}{'mismatch':>10}{'shots':>7}"
-        f"{'on scr':>8}{'<50%':>7}{'<25%':>7}{'<10%':>7}{'s/ep':>8}"
+        f"{'method':<16}{'score':>8}{'median':>8}{'shots':>7}{'switch':>8}"
+        f"{'mach s':>8}{'wall s':>8}{'<50%':>7}{'<25%':>7}{'<10%':>7}"
     )
     lines = [header, "-" * len(header)]
     for row in rows:
         lines.append(
-            f"{row['method']:<14}{row['score']:>8.3f}{row['score_median']:>8.3f}"
-            f"{row['mismatch']:>10.3f}{row['shots']:>7.1f}"
-            f"{row['delivered']:>7.0%}{row['hit_50']:>7.0%}{row['hit_25']:>7.0%}"
-            f"{row['hit_10']:>7.0%}{row['seconds'] / row['episodes']:>8.1f}"
+            f"{row['method']:<16}{row['score']:>8.3f}{row['score_median']:>8.3f}"
+            f"{row['shots']:>7.1f}{row['switches']:>8.1f}"
+            f"{row['machine_s']:>8.1f}{row['wall_s']:>8.1f}"
+            f"{row['hit_50']:>7.0%}{row['hit_25']:>7.0%}{row['hit_10']:>7.0%}"
         )
     return "\n".join(lines)
 

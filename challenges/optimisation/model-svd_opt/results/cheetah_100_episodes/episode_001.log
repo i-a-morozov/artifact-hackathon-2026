@@ -1,0 +1,11 @@
+Matplotlib is building the font cache; this may take a moment.
+Building nominal response controls
+Thread 1: BPM prefix 31->31/31, IP=True
+bo: optics matching
+bo: final corrector centering
+/Users/Hamwi/Documents/projects/AISSAI/optimisation/.venv/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+rcds: optics matching
+rcds: final corrector centering
+bo: completed; transmission=0.975, centroid=(-0.089, -0.038) mm, sigma=(0.940, 1.063) mm
+rcds: completed; transmission=0.973, centroid=(-0.037, 0.018) mm, sigma=(0.906, 1.037) mm

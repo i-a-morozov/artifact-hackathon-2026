@@ -181,14 +181,17 @@
   <h2>How we split it</h2>
   <table class="people">
     <tbody>
-      <tr><td>Francesco</td><td>Sim2real matching with tomography, beam optics,
-        multi-fidelity BO. Transmission and the VBC-on rematch.</td></tr>
-      <tr><td>Eiad</td><td>Beam optics and SVD: a good reference tune, and which
-        quadrupoles and correctors actually matter for a given target.</td></tr>
-      <tr><td>Ivan</td><td>Numerical optimisation for S04, then run against Eiad&rsquo;s
-        and Francesco&rsquo;s optics.</td></tr>
-      <tr><td>Manuel</td><td>A robust measure for real screen images &mdash; and a DALIA
-        job that pushed the whole <strong>0.8 TB</strong> of captures through it.</td></tr>
+      <tr><td>Francesco</td><td>Sim2real matching with tomography and beam optics, the
+        VBC-on rematch, and the multi-fidelity BO pipeline: twin as low fidelity,
+        machine as high fidelity.</td></tr>
+      <tr><td>Eiad</td><td>Beam optics and SVD: the reference tune, which quadrupoles and
+        correctors matter for a given target, and per-node orbit response matrices
+        cross-checked in Cheetah and xsuite.</td></tr>
+      <tr><td>Ivan</td><td>Numerical optimisation section by section &mdash; response-matrix
+        correction, BO, RCDS, RCDS+BO and PPO, all on the same image budget.</td></tr>
+      <tr><td>Manuel</td><td>A robust measure for real screen images, and a filter for the
+        captures worth using &mdash; a DALIA job over the whole
+        <strong>0.8 TB</strong>.</td></tr>
       <tr><td>Amy</td><td>The framework and simulation environment, and a model-based RL
         agent built against it, driving Eiad&rsquo;s SVD controls.</td></tr>
     </tbody>
@@ -218,17 +221,21 @@
     <div class="step"><strong>3. SVD, correctors vs BPMs</strong> &mdash; the controls that centre this beam</div>
     <div class="cost">no shots</div>
     <div class="arrow">&darr;</div><div></div>
-    <div class="step"><strong>4. Steering</strong> &mdash; simple optimisation, typically 1 iteration</div>
+    <div class="step"><strong>4. Steering</strong> &mdash; simple optimisation, typically 1 iteration, 4 at worst</div>
     <div class="cost">1&ndash;4 shots</div>
     <div class="arrow">&darr;</div><div></div>
-    <div class="step"><strong>5. Coupled SVD</strong> &mdash; quadrupoles + correctors together, for focusing</div>
+    <div class="step"><strong>5. Focus SVD</strong> &mdash; quadrupoles and correctors together, for focusing</div>
     <div class="cost">no shots</div>
     <div class="arrow">&darr;</div><div></div>
-    <div class="step"><strong>6. Tweak the tune</strong> &mdash; numerical optimisation or the RL agent</div>
-    <div class="cost">~20 shots</div>
+    <div class="step"><strong>6. Tweak the matched tune</strong> &mdash; numerical optimisation or the RL agent,
+      <em>focusing only</em></div>
+    <div class="cost">~10&ndash;20 shots</div>
     <div class="arrow">&darr;</div><div></div>
-    <div class="step"><strong>7. Read the screen</strong> with the robust measure, and iterate</div>
+    <div class="step"><strong>7. Read the screen</strong> with the robust measure, and go round again</div>
     <div class="cost">every shot</div>
+    <div class="arrow">&darr;</div><div></div>
+    <div class="step"><strong>8. One last corrector SVD</strong> &mdash; place the spot, with the focused optics</div>
+    <div class="cost">1 shot</div>
   </div>
   <p style="margin-top:0.8em; font-size:0.62em;">Everything that can happen in the model
     happens in the model. The machine is only asked when it has to be.</p>
@@ -294,6 +301,10 @@
             VBC</strong> per node &mdash; L-BFGS through differentiable Cheetah.</li>
         <li>Only a handful of magnets do the work: S06 Q01/Q02 for the VBC,
             FEA Q15/Q16 and FEH Q1/Q2 for the size. The rest are degenerate.</li>
+        <li>Checked in <strong>both backends</strong>: all 144 nodes tracked with the same
+            200k bunch in Cheetah and in xsuite give a median transmission of
+            <strong>98.95%</strong> either way, and never differ by more than
+            1.1 points at a node.</li>
       </ul>
       <table style="width:auto; margin-top:0.6em;">
         <thead><tr><th></th><th class="num">Before</th><th class="num">After</th></tr></thead>
@@ -334,7 +345,7 @@
 </section>
 
 <section>
-  <h2>5. The coupled control set</h2>
+  <h2>5. The focus control set</h2>
   <ul>
     <li>The same trick again, but for focusing: SVD of
         d&thinsp;ln(rms size) / d&thinsp;k<sub>1</sub> at every screen and the readout,
@@ -345,6 +356,9 @@
         V<sub>ij</sub><sup>2</sup>)</span>
         over the modes holding 99% of the squared response, so the control set is
         <em>ranked</em>, not guessed.</li>
+    <li>What survives the ranking is small: the five quadrupoles nearest the IP
+        (FEA Q14/Q15/Q16, FEH Q1/Q2), the nearest correctors in each plane, and the two
+        FEA sextupoles. Out of 46 + 58 knobs.</li>
     <li>1.5 to 2.5 minutes per target on the error-free model. Zero environment steps.</li>
   </ul>
   <div class="choice">
@@ -353,7 +367,7 @@
     <b class="k">Cost:</b> the centroid SVD ranks the last two correctors near the
     <em>bottom</em>, because they move nothing but the final screen &mdash; which is
     exactly the property we need to place the spot. The ranking has to be read with the
-    objective in mind, not taken literally.
+    objective in mind; it is why placing the spot is its own step at the end.
   </div>
 </section>
 
@@ -378,7 +392,32 @@
 </section>
 
 <section>
-  <h2>6. Tweak the tune</h2>
+  <h2>6. Tweak the tune, one: multi-fidelity BO</h2>
+  <div class="cols">
+    <div class="col narrow" style="text-align:center;">
+      <img src="mfopt/mfopt_workflow.svg" alt="One MF-BO episode, from reset to score"
+           style="max-height:72vh; width:auto;">
+    </div>
+    <div class="col wide">
+      <ul>
+        <li><strong>Low fidelity is the twin, high fidelity is the machine.</strong>
+            256 Sobol points over seven knobs in <em>one</em> batched Cheetah track:
+            1.5 s, where tracking them one at a time took 10 s.</li>
+        <li>The machine is modelled as the twin&rsquo;s GP plus a discrepancy &mdash; an
+            offset, then a GP of its own once there are three readings.</li>
+        <li>Each proposal maximises expected improvement of the benchmark mismatch, and
+            sets the FEH correctors to cancel the centroid it predicts.</li>
+        <li><strong>It stops itself.</strong> When the expected improvement is worth less
+            than the cost of one more step, it returns to the best reading it has seen.</li>
+        <li>Purple boxes in the figure cost nothing: they are the error-free twin.
+            Blue and teal are shots.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>6. Tweak the tune, two: model-based RL</h2>
   <div class="cols">
     <div class="col">
       <h3>The twin</h3>
@@ -390,6 +429,9 @@
       <p class="eqn">&#375;(&delta;) = y<sub>meas</sub> + [ twin(k+&delta;) &minus; twin(k) ]</p>
       <p>A model wrong by a constant still predicts the <em>effect</em> of a move, and
          anchoring cancels the constant exactly.</p>
+      <p><strong>The machine is 1% of the arithmetic.</strong> An episode spends 25 shots
+         and 290k particle-tracks on the machine; the twin spends 30.7 M across 611 calls.
+         That is the whole point &mdash; only the shots cost beam time.</p>
     </div>
     <div class="col">
       <h3>Two things that mattered</h3>
@@ -407,6 +449,7 @@
   </div>
 </section>
 
+
 <section>
   <h2>7. Reading the screen</h2>
   <div class="cols">
@@ -421,44 +464,167 @@
         <li>The same measure drives the agent in simulation. The benchmark scores the
             particle moments; <em>the agent never sees them</em>.</li>
       </ul>
-    </div>
-    <div class="col narrow">
-      <div class="choice" style="margin-top:0;">
+      <div class="choice">
         <b class="c">Choice:</b> drive the agent from the camera measure, not from the
         truth available in simulation.<br>
         <b class="k">Cost:</b> it costs accuracy and it costs speed. It is also the only
         version of the loop that could be moved onto the machine unchanged.
       </div>
     </div>
+    <div class="col narrow">
+      <figure>
+        <img src="screens/Noisy_beam.png" alt="Raw and cleaned beam image">
+        <figcaption>A good clean: raw left, cleaned right. The halo and the background
+          go, the beam stays.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>8. Size first, then position</h2>
+  <ul>
+    <li>The focus works on the <strong>quadrupoles only</strong>, and scores the
+        <strong>size and transmission only</strong>.</li>
+    <li>Where the spot actually lands is settled afterwards, by the two correctors nearest
+        the screen: a <strong>two-row least squares</strong>, one shot. Not a search.</li>
+    <li>The request puts the spot anywhere within 2 mm of the screen centre &mdash; about
+        eight requested spot sizes, and most of the score. It is worth a step of its own.</li>
+  </ul>
+  <div class="choice">
+    <b class="c">Choice:</b> separate the two, rather than optimising size and position
+    together.<br>
+    <b class="k">Cost:</b> none that we found &mdash; and the alternative is expensive.
+    Put both in one optimiser and a quadrupole will happily fix a 2 mm position error by
+    distorting the optics, which it can do, and which costs exactly the size the focus
+    just bought.
+  </div>
+</section>
+
+<section>
+  <h2>Which captures can you believe?</h2>
+  <div class="cols">
+    <div class="col wide">
+      <ul>
+        <li>Not every capture has a beam in it. Clean a weak one and nothing is left
+            &mdash; but it still returns four perfectly confident numbers.</li>
+        <li>So each file is judged on how its readings <em>move</em> across its captures:
+            keep it only if the relative variation of all four of
+            c<sub>x</sub>, c<sub>y</sub>, s<sub>x</sub>, s<sub>y</sub> sits between
+            <strong>0.1% and 30%</strong>.</li>
+        <li>Below that, nothing is changing and the camera is looking at a wall. Above it,
+            the measure is chasing noise.</li>
+        <li><strong>5,732 capture sets</strong> come through the filter, with their means,
+            spreads and ranges.</li>
+      </ul>
+    </div>
+    <div class="col narrow">
+      <figure>
+        <img src="screens/Weak_beam.png" alt="A weak beam before and after cleaning">
+        <figcaption>A bad clean: the raw frame is almost empty, and after cleaning there
+          is nothing to measure. Discarded.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>And section by section: what actually wins?</h2>
+  <p>Same section (S04), same image budget, same objective &mdash; response-matrix
+     correction, BO, RCDS, RCDS+BO and PPO, head to head.</p>
+  <div class="cols">
+    <div class="col">
+      <table>
+        <thead><tr><th>9 images, 4 held-out beams</th><th class="num">Objective</th></tr></thead>
+        <tbody>
+          <tr><td>PPO, trained on one beam</td><td class="num">0.264</td></tr>
+          <tr><td>Response correction <span class="muted">(2 images)</span></td><td class="num">0.268</td></tr>
+          <tr><td>RCDS, response directions</td><td class="num">0.279</td></tr>
+          <tr><td>RCDS, plain</td><td class="num">0.283</td></tr>
+          <tr><td class="muted">RCDS, plain, at 32 images</td><td class="num muted">0.091</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col">
+      <ul>
+        <li><strong>At a realistic image budget they are all within noise of each other.</strong>
+            The budget decides the result, not the algorithm.</li>
+        <li>Give it room and the picture changes: over five beams at 128 images,
+            RCDS 0.126, RCDS+BO 0.119 &mdash; and response correction
+            <strong>0.017</strong>.</li>
+        <li>What wins is using the <em>vector</em> residual and a model-based correction on
+            every image. RCDS only ever sees a scalar.</li>
+      </ul>
+      <p class="footnote">Local screen objective on S04, lower is better. Not the
+        whole-lattice FEH score.</p>
+    </div>
   </div>
 </section>
 
 <!-- ------------------------------------------------------------- results -->
 <section>
-  <h2>Does it work?</h2>
-  <table style="width:85%; margin: 0 auto;">
+  <h2>Does it work? Multi-fidelity BO</h2>
+  <table style="width:92%; margin: 0 auto;">
     <thead>
       <tr>
-        <th></th><th class="num">Mismatch</th><th class="num">Shots</th>
-        <th class="num">Transmission</th><th class="num">Within 50%</th>
+        <th></th><th class="num">Score</th><th class="num">Median</th>
+        <th class="num">Within 10%</th><th class="num">Within 25%</th><th class="num">Steps</th>
       </tr>
     </thead>
     <tbody>
-      <tr><td>Do nothing</td><td class="num">9.97</td><td class="num">0</td><td class="num">74%</td><td class="num">0%</td></tr>
-      <tr><td>Optics only</td><td class="num">7.14</td><td class="num">1</td><td class="num">97%</td><td class="num">0%</td></tr>
-      <tr><td>Optics + steering</td><td class="num">6.84</td><td class="num">5</td><td class="num">98%</td><td class="num">0%</td></tr>
-      <tr><td><strong>Full pipeline</strong></td>
-          <td class="num good"><strong>1.29</strong></td><td class="num">26</td>
-          <td class="num">82%</td><td class="num good"><strong>75%</strong></td></tr>
+      <tr><td>Do nothing</td><td class="num">9.37</td><td class="num">10.00</td><td class="num">0%</td><td class="num">0%</td><td class="num">0</td></tr>
+      <tr><td>Optics only</td><td class="num">6.50</td><td class="num">6.22</td><td class="num">0%</td><td class="num">0%</td><td class="num">1</td></tr>
+      <tr><td>Stage A <span class="muted">(optics, thread, steer)</span></td>
+          <td class="num">0.49</td><td class="num">0.38</td><td class="num">30%</td><td class="num">73%</td><td class="num">4.6</td></tr>
+      <tr><td><strong>Stage A + MF-BO</strong></td>
+          <td class="num good"><strong>0.32</strong></td><td class="num good"><strong>0.25</strong></td>
+          <td class="num good"><strong>77%</strong></td><td class="num">97%</td><td class="num">10.2</td></tr>
     </tbody>
   </table>
-  <p class="footnote" style="text-align:center;">8 episodes, mismatch in units of the
-    requested spot size, median score 0.98. 63% of episodes land within 25%, 25% within 10%.</p>
-  <ul style="margin-top:0.8em;">
-    <li>The lookup alone is worth most of the transmission and none of the accuracy.</li>
-    <li>Steering alone is worth almost nothing <em>here</em> &mdash; the reference optics
-        already delivers beam to every BPM, so there is nothing to recover.</li>
-    <li>The last stage is what closes the gap, and it costs about twenty shots.</li>
+  <p class="footnote" style="text-align:center;">30 days, seeds 1000&ndash;1029. Score is
+    the benchmark score; lower is better.</p>
+  <ul style="margin-top:0.6em;">
+    <li><strong>Stage A is five shots and does most of the work</strong> &mdash; 9.37 to
+        0.49 &mdash; because the optics come out of the model for free.</li>
+    <li>MF-BO spends five more shots and takes the hit rate inside a tenth of the
+        requested spot from 30% to <strong>77%</strong>.</li>
+    <li>On 12 deliberately lost-beam days (&times;5 misalignment) it still gets there:
+        0.37, 75% within 10%, 13 steps. Stage A threads the beam back first.</li>
+    <li>Every episode finishes inside the 50-step budget &mdash; the longest was 32 &mdash;
+        with beam on the screen.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Does it work? Model-based RL</h2>
+  <table style="width:92%; margin: 0 auto;">
+    <thead>
+      <tr>
+        <th></th><th class="num">Score</th><th class="num">Median</th><th class="num">Shots</th>
+        <th class="num">&lt;50%</th><th class="num">&lt;25%</th><th class="num">&lt;10%</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Do nothing</td><td class="num">9.51</td><td class="num">10.00</td><td class="num">0</td><td class="num">0%</td><td class="num">0%</td><td class="num">0%</td></tr>
+      <tr><td>Reference optics only</td><td class="num">6.12</td><td class="num">7.25</td><td class="num">1</td><td class="num">0%</td><td class="num">0%</td><td class="num">0%</td></tr>
+      <tr><td>Optics + steering</td><td class="num">5.88</td><td class="num">6.23</td><td class="num">5.0</td><td class="num">6%</td><td class="num">0%</td><td class="num">0%</td></tr>
+      <tr><td>Full pipeline</td><td class="num">1.44</td><td class="num">0.78</td><td class="num">25.6</td><td class="num">81%</td><td class="num">72%</td><td class="num">25%</td></tr>
+      <tr><td><strong>+ survey error fitted</strong></td>
+          <td class="num good"><strong>0.95</strong></td><td class="num good"><strong>0.66</strong></td>
+          <td class="num">25.2</td><td class="num">91%</td><td class="num">84%</td>
+          <td class="num good"><strong>41%</strong></td></tr>
+    </tbody>
+  </table>
+  <p class="footnote" style="text-align:center;">32 episodes, seeds 1234&ndash;1265 &mdash;
+    a different draw of days from the table before, so read the columns, not the two
+    tables against each other.</p>
+  <ul style="margin-top:0.6em;">
+    <li>Read down it: the lookup takes a failed episode to 6.1 in one shot, steering is
+        worth a little more, and the model-based tweak does the rest.</li>
+    <li><strong>Fitting the survey error is worth a third of the score</strong>, and takes
+        the 10% hit rate from 25% to 41%. A misaligned quadrupole kicks and a misaligned
+        sextupole focuses; no launch offset imitates either.</li>
+    <li>It is still off by default. On this evidence it should not be.</li>
   </ul>
 </section>
 
@@ -476,6 +642,10 @@
     <li><strong>Clipping the cost at the benchmark&rsquo;s scale.</strong> The benchmark
         stops counting at ten spot sizes. An untuned machine sits at seventy, so a clipped
         cost is flat across the entire region where tuning happens.</li>
+    <li><strong>Trusting raw SVD directions.</strong> Handing RCDS the raw singular
+        directions made it five times <em>worse</em> than plain coordinate axes
+        (0.66 against 0.126). Making the directions boundary-aware fixed it. A good basis
+        in the model is not automatically a good basis for a bounded line search.</li>
     <li><strong>Splitting by workstream, not by interface.</strong> Everything converged
         in the last day. It worked &mdash; but see the first two bullets.</li>
   </ul>
@@ -489,13 +659,18 @@
         beam it assumes, and reload. Another 40 s of model time, no extra shots. The size
         residual is the binding constraint, and this is the most promising thing we have
         not tried.</li>
-    <li><strong>A Dyna layer.</strong> The twin is a free simulator: randomise the latent,
-        roll out inside it, and train a policy that proposes the first move. Twenty shots
-        of MPC become a few shots plus a refinement.</li>
-    <li><strong>Fit the survey error by default</strong>, not as a flag. A misalignment
-        does things no launch offset can imitate.</li>
-    <li><strong>Check it against xsuite.</strong> Everything here is Cheetah, one nominal
-        beam, no jitter or ripple. These are ideal numbers.</li>
+    <li><strong>The Dyna layer, started this afternoon.</strong> The twin is a free
+        simulator, so it can also be the machine: randomise the latent, run the real agent
+        against it, and clone what the planner decided. A millisecond proposal as a warm
+        start, instead of twenty shots of search.</li>
+    <li><strong>Fit the survey error by default</strong>, not as a flag. It is worth a
+        third of the score and we have the evidence now.</li>
+    <li><strong>Put the two tuners in the same room.</strong> MF-BO gets there in ten
+        shots, the RL agent gets further on the hard days. Nobody has run them against
+        each other on the same seeds.</li>
+    <li><strong>Mind the currents.</strong> Every knob here is in model units. The lattice
+        and the current conversion disagree about the beam energy at the VBC by 8%, so
+        S05&ndash;S06 would come out that much strong the day these settings become amps.</li>
   </ul>
 </section>
 
@@ -506,7 +681,8 @@
         difference between the model and the machine.</li>
     <li>Anchor on the measurement, size your steps by their effect, and read the beam the
         way the control room reads it.</li>
-    <li>26 shots from a cold start to three quarters of the requests inside half a spot size.</li>
+    <li>Ten shots from a cold start to 77% of days inside a tenth of the requested spot.
+        Twenty-five, and the hard days come too.</li>
   </ul>
   <p class="team" style="margin-top:1.4em;"><strong>Team Overfit &amp; Proud</strong></p>
   <p class="names">Amy &nbsp;&middot;&nbsp; Eiad &nbsp;&middot;&nbsp; Francesco

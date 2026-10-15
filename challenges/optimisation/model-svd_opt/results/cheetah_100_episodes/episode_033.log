@@ -1,0 +1,10 @@
+Building nominal response controls
+Thread 1: BPM prefix 31->31/31, IP=True
+Traceback (most recent call last):
+  File "/Users/Hamwi/Documents/projects/AISSAI/optimisation/model-svd_opt/run_ensemble.py", line 76, in worker
+    import torch
+                ^
+  File "/Users/Hamwi/Documents/projects/AISSAI/optimisation/model-svd_opt/workflow.py", line 211, in run
+    if delta>1e-4:raise RuntimeError('Seeded threading replay differs by more than 100 micrometres')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Seeded threading replay differs by more than 100 micrometres

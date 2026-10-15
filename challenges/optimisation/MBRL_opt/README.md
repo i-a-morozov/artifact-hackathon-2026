@@ -22,13 +22,24 @@ request (mu_x, mu_y, sigma_x, sigma_y)
      leading corrector planes, response from the twin, inverted    1–4 shots
         │
         ▼
-3. coupled control set   SVD: leading quadrupoles + leading correctors
-     plus the final correctors, sextupoles, RF phases, chicane     no shots
+3. control set           SVD: leading quadrupoles, plus the
+     sextupoles, RF phases and chicane                             no shots
         │
         ▼
-4. tweak the tune        differentiable Cheetah twin + CEM/Adam    ~20 shots
+4. match the size        differentiable twin + CEM/Adam            ~20 shots
      fit what the machine is, plan against it, re-read the camera
+     scores the spot size and transmission only
+        │
+        ▼
+5. place the spot        SVD: final correctors vs readout centroid  1 shot
+     two-row least squares, not a search
 ```
+
+**Size and position are separated on purpose.** The focus works only on the
+quadrupoles and scores only the size; where the spot lands is settled afterwards by
+the two correctors nearest the screen, in a single linear solve. Put the two in one
+optimiser and a quadrupole will happily fix a 2 mm position error by distorting the
+optics — which it can do, and which costs the size the focus just bought.
 
 ## Why it is shaped like this
 
@@ -99,7 +110,7 @@ to linear. An episode is two to three minutes; most of it is the twin.
 
 ## Results
 
-Eight episodes, seeds 1234–1241, at SimEnv's defaults (`beam_variation` 1.0,
+32 episodes, seeds 1234–1265, at SimEnv's defaults (`beam_variation` 1.0,
 `misalignment_variation` 1.0, shot jitter and the VBC on). Every method sees the same
 episodes. Score is the mean `info["benchmark_score"]`, which is
 `score.Report.calc_score` for one episode — mismatch in requested spot sizes, plus
@@ -109,32 +120,35 @@ mean component error came inside 50 %, 25 % and 10 % of the requested spot.
 
 | method | score | median | mismatch | shots | <50% | <25% | <10% |
 |---|---|---|---|---|---|---|---|
-| **full pipeline, survey error fitted** | **0.77** | **0.58** | 0.47 | 25.8 | 88 % | 88 % | 25 % |
-| full pipeline | 1.59 | 0.98 | 1.29 | 25.8 | 75 % | 62 % | 25 % |
-| optics + steering | 6.91 | 7.27 | 6.84 | 4.9 | 0 % | 0 % | 0 % |
-| reference optics only | 7.16 | 8.22 | 7.14 | 1.0 | 0 % | 0 % | 0 % |
-| do nothing | 9.97 | 10.00 | 9.97 | 0 | 0 % | 0 % | 0 % |
+| **full pipeline, survey error fitted** | **0.95** | **0.66** | 0.65 | 25.2 | 91 % | 84 % | 41 % |
+| full pipeline | 1.44 | 0.78 | 1.14 | 25.6 | 81 % | 72 % | 25 % |
+| optics + steering | 5.88 | 6.23 | 5.81 | 5.0 | 6 % | 0 % | 0 % |
+| reference optics only | 6.12 | 7.25 | 6.10 | 1.0 | 0 % | 0 % | 0 % |
+| do nothing | 9.51 | 10.00 | 9.51 | 0 | 0 % | 0 % | 0 % |
 
-Read down the table: the reference optics takes a failed episode to 7.2 in one shot,
-steering is worth a little more, and the model-based tweak does the rest — 6.9 to 1.6,
-with a median of 0.98 and a quarter of episodes landing inside a tenth of the
+Read down the table: the reference optics takes a failed episode to 6.1 in one shot,
+steering is worth a little more, and the model-based tweak does the rest — 5.9 down to
+0.95, with a median of 0.66 and 41 % of episodes landing inside a tenth of the
 requested spot. Every method delivers beam on every episode.
 
-The reference optics scoring 7.2 is not the lookup being wrong: on its own model it
+The reference optics scoring 6.1 is not the lookup being wrong: on its own model it
 hits the requested size to a fraction of a percent. It is the cost of the request
 naming a *position* the matched family never matched for, plus the episode's own beam
 and survey error. That is precisely the gap stage 4 exists to close.
 
-**Fitting the survey error halves the score**, from 1.59 to 0.77, and takes the hit
-rate inside a quarter of the requested spot from 62 % to 88 %. It is still off by
-default, so the aligned twin is the baseline and this is an ablation you switch on
+**Fitting the survey error is worth a third of the score**, 1.44 to 0.95, and takes
+the hit rate inside a tenth of the requested spot from 25 % to 41 %. It is still off
+by default, so the aligned twin is the baseline and this is an ablation you switch on
 with `--fit-misalignments`; on this evidence it should probably become the default. A
 misaligned quadrupole kicks and a misaligned sextupole focuses, and no amount of
 adjusting where the beam was launched imitates either.
 
-Reproduce with `evaluate.py --episodes 8 --seed 1234 --workers 8`, adding
+Reproduce with `evaluate.py --episodes 32 --seed 1234 --workers 32`, adding
 `--fit-misalignments` for the first row. Numbers are in `results.json` and
-`results_fitmis.json`.
+`results_fitmis.json`. These were run on the 64-core apml1 container, which is about
+half the per-core speed of a laptop and ran 32 episodes of all four methods in around
+40 minutes. Give `--workers` at least as many slots as there are episodes, or the
+leftovers queue for a whole second wave.
 
 ### Cost per episode
 

@@ -15,9 +15,10 @@ from dataclasses import dataclass, field
 # The last two correctors before the hutch, both planes. The request names a
 # position as well as a size — anywhere within 2 mm of the screen centre, which is
 # some eight spot sizes and most of the score — and the matched optics only ever
-# matched the size. These are what put the spot where it was asked for, and the
-# centroid SVD ranks them near the bottom precisely because they move nothing except
-# the last screen, which is the whole reason they are wanted here.
+# matched the size. These put the spot where it was asked for, in one shot, after
+# the focus has finished with the quadrupoles. The centroid SVD ranks them near the
+# bottom precisely because they move nothing except the last screen, which is the
+# whole reason they are wanted for this and nothing else.
 
 # Extra knobs the SVD ranking cannot offer, because the optics lookup does not vary
 # them: the two FEA sextupoles, the four powered cavity phases and the VBC chicane.
@@ -54,12 +55,26 @@ class MBRLConfig:
     steering_correctors: int = 10
     # Quadrupoles used for the focus, from the beam-size modes.
     focus_quads: int = 6
-    # Corrector planes turned alongside them, coupled rather than in sequence.
-    focus_correctors: int = 4
+    # Corrector planes turned alongside the quadrupoles during the focus. Zero:
+    # the focus matches the *size*, and where the spot lands is settled afterwards
+    # by `placement_correctors` in a single linear solve. Putting the two in one
+    # optimiser lets a quadrupole chase a 2 mm position error by distorting the
+    # optics — which it can do, and which costs the size the focus just bought.
+    focus_correctors: int = 0
     # Knobs outside the SVD's reach that the focus should have anyway.
-    focus_extra: list[str] = field(
-        default_factory=lambda: FINAL_CORRECTORS + ENERGY_KNOBS
+    focus_extra: list[str] = field(default_factory=lambda: list(ENERGY_KNOBS))
+
+    # The last stage: one round of SVD steering that puts the finished spot on the
+    # requested position, on the correctors closest to the screen.
+    placement_correctors: list[str] = field(
+        default_factory=lambda: list(FINAL_CORRECTORS)
     )
+    # Rounds of it. The readout centroid is linear in these kicks, so one is
+    # normally enough and the rest of the budget is better spent on the focus.
+    placement_shots: int = 1
+    # Singular values below this fraction of the largest are dropped from the
+    # placement solve.
+    placement_cutoff: float = 0.05
 
     # ---------------- the shot budget ---------------- #
 
@@ -68,7 +83,7 @@ class MBRLConfig:
     # 0.34 of a requested spot size, 80 cost 0.58. These defaults sit just under one
     # budget so the tune is paid for at roughly a third of a spot.
     steering_shots: int = 4
-    focus_shots: int = 20
+    focus_shots: int = 12
 
     # Stop steering early once the orbit is this flat (m, rms over valid BPMs) and
     # every BPM is reading. Shots saved here are spent on the focus instead.
@@ -77,9 +92,16 @@ class MBRLConfig:
     # is the usual way steering ends: a handful of correctors against a survey error
     # on forty-six quadrupoles reaches a floor and stays there.
     steering_patience: int = 2
-    # Stop the whole tune once the reading is this close to the request, in requested
-    # spot sizes. Below the shot-to-shot jitter there is nothing left to win.
-    focus_mismatch_tolerance: float = 0.05
+    # Stop the focus once the spot is this close to the requested size, in requested
+    # spot sizes. The focus scores size and transmission only, and the reference
+    # optics usually hands it something already within a tenth of a spot, so this
+    # sits just above the shot-to-shot jitter — about 8 % of an rms, or 0.1 in these
+    # units. Set it below that and the stage spends its whole budget chasing noise.
+    focus_mismatch_tolerance: float = 0.15
+    # Or stops after this many shots in a row that failed to improve on the best.
+    # The jitter floor moves with the request, so knowing when to stop is better
+    # decided by watching than by a threshold.
+    focus_patience: int = 3
 
     # ---------------- the twin ---------------- #
 

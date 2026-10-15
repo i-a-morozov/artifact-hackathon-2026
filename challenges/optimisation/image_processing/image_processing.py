@@ -166,10 +166,14 @@ def main():
                         file_count = 0
                     # file_found = True
                     # Extract data
-                    with h5py.File(os.path.join(current_dir, file), "r") as f:
-                        for key in f.keys():
-                            centers, deviation = treat_file(f[key][:], camera_conversions[camera_conversion])
-                            csv_contents.append([file, key, centers[0], centers[1], deviation[0], deviation[1]])
+                    try:
+                        with h5py.File(os.path.join(current_dir, file), "r") as f:
+                            for key in f.keys():
+                                centers, deviation = treat_file(f[key][:], camera_conversions[camera_conversion])
+                                csv_contents.append([file, key, centers[0], centers[1], deviation[0], deviation[1]])
+                    except Exception as e:
+                        print("File did not work")
+                        print(e)
             # if not file_found:
             # print(f"File {file_name} not found")
 

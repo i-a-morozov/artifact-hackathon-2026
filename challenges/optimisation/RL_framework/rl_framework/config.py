@@ -47,6 +47,11 @@ class RLConfig:
     # tracking kernel. Same lattice, same beam, same interface either way.
     backend: str = "cheetah"
 
+    # The X-band linearizer L4H (`cla_l4h_lin_cav_01`) is off on the machine: True
+    # tracks it as a drift of its own length (its iris aperture stays), as
+    # `orbit_matching/` does. False powers it as the lattice file has it.
+    l4h_off: bool = True
+
     # Where `xsuite_model.py` lives, and what it is given. None takes the defaults
     # of the nominal model: the challenge lattice file and its starting beam.
     nominal_model_dir: str | None = None

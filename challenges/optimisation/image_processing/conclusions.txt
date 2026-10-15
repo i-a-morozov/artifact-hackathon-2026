@@ -1,0 +1,4 @@
+The simple filters allows for a cleaning of dirty images to extract the characterization (mean and deviation) of the beam
+All the images have been filtered and characterized in dalia
+Exploring the images (variation_histogram_log) we can see outliers by the percentage change. I used an easy filter to remove them, a learning model would have done a better job (lack of time)
+The same set of histograms per camera could show cameras with bad beam captures that would need retuning

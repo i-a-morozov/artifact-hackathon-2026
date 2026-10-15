@@ -177,6 +177,33 @@ def _import_xsuite_model(directory: str | Path | None):
     return xsuite_model
 
 
+L4H = "cla_l4h_lin_cav_01"
+
+
+def _without_l4h(lattice_json) -> Path:
+    """A copy of the lattice file with L4H replaced by a second-order drift of the
+    same length and name, written next to the system's temporary files once per
+    source file and content."""
+    import hashlib
+    import tempfile
+
+    text = Path(lattice_json).read_text()
+    lattice = json.loads(text)
+    kind, params = lattice["elements"][L4H]
+    if kind == "Cavity":
+        lattice["elements"][L4H] = [
+            "Drift", {"length": params["length"], "tracking_method": "second_order"}
+        ]
+    digest = hashlib.sha1(text.encode()).hexdigest()[:12]
+    path = Path(tempfile.gettempdir()) / "rl_framework" / f"{Path(lattice_json).stem}_l4h_off_{digest}.json"
+    if not path.exists():
+        path.parent.mkdir(parents=True, exist_ok=True)
+        partial = path.with_suffix(f".{np.random.randint(1 << 30)}.part")
+        partial.write_text(json.dumps(lattice))
+        partial.replace(path)
+    return path
+
+
 class Transport(ABC):
     """One of the two models the environment can track its beam through.
 
@@ -503,6 +530,8 @@ class SimEnv(BaseAcceleratorEnv):
         super().__init__(config)
         self.model = _import_xsuite_model(config.nominal_model_dir)
         lattice_json = config.nominal_lattice_json or self.model.LATTICE_JSON
+        if config.l4h_off:
+            lattice_json = _without_l4h(lattice_json)
 
         coordinates, energy_ev, self.beam_metadata = self.model.load_distribution(
             config.distribution_path or self.model.INITIAL_DISTRIBUTION

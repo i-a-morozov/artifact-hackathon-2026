@@ -63,6 +63,9 @@ def do_nothing(env, twin: CheetahTwin, config: MBRLConfig, seed=None):
             [info["mu_x"], info["mu_y"], info["sigma_x"], info["sigma_y"]]
         ),
         steering_shots=0,
+        screen_switches=0,
+        seconds=0.0,
+        machine_seconds=float(info["evaluations"]),
         orbit_rms=(
             float(np.sqrt((x[valid] ** 2 + y[valid] ** 2).mean() / 2))
             if valid.any()

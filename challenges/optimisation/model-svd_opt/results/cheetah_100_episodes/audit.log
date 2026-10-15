@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "episodes": 100,
+  "total_steps": 38434,
+  "total_reset_shots": 299,
+  "total_screen_changes": 0,
+  "retained_error_outcomes": [
+    {
+      "episode": 33,
+      "error": {
+        "type": "RuntimeError",
+        "message": "Seeded threading replay differs by more than 100 micrometres",
+        "traceback": "Traceback (most recent call last):\n  File \"/Users/Hamwi/Documents/projects/AISSAI/optimisation/model-svd_opt/run_ensemble.py\", line 76, in worker\n    import torch\n                ^\n  File \"/Users/Hamwi/Documents/projects/AISSAI/optimisation/model-svd_opt/workflow.py\", line 211, in run\n    if delta>1e-4:raise RuntimeError('Seeded threading replay differs by more than 100 micrometres')\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: Seeded threading replay differs by more than 100 micrometres\n"
+      }
+    },
+    {
+      "episode": 74,
+      "error": {
+        "type": "RuntimeError",
+        "message": "Seeded threading replay differs by more than 100 micrometres",
+        "traceback": "Traceback (most recent call last):\n  File \"/Users/Hamwi/Documents/projects/AISSAI/optimisation/model-svd_opt/run_ensemble.py\", line 76, in worker\n    import torch\n                ^\n  File \"/Users/Hamwi/Documents/projects/AISSAI/optimisation/model-svd_opt/workflow.py\", line 211, in run\n    if delta>1e-4:raise RuntimeError('Seeded threading replay differs by more than 100 micrometres')\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: Seeded threading replay differs by more than 100 micrometres\n"
+      }
+    }
+  ],
+  "results_json_sha256": "d408b5420cc253b3fe556496c3230207d37b9bd0a26a701e78022dc2d586b7a3",
+  "results_json_bytes": 281740051,
+  "checked_at_utc": "2026-10-15T16:49:25.659874+00:00",
+  "checks": [
+    "episode and seed inventory",
+    "recorded step/reset/screen-change counts",
+    "per-shot finite wall times",
+    "native final step counters",
+    "single-shot benchmark scores",
+    "fresh-verification mean benchmark scores",
+    "modal membership and centering restriction",
+    "fresh stochastic repeats",
+    "workflow shot-counter accounting"
+  ]
+}

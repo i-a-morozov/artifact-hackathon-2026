@@ -89,17 +89,28 @@ class Plan:
 
 
 def benchmark_mismatch(
-    moments: torch.Tensor, target: torch.Tensor, cap: float = MAX_MISMATCH
+    moments: torch.Tensor,
+    target: torch.Tensor,
+    cap: float = MAX_MISMATCH,
+    position_weight: float = 1.0,
 ) -> torch.Tensor:
     """`SimEnv._mismatch`: the error in units of the spot size that was asked for.
 
     Position and size weighted equally, each component against the mean requested
     spot, which is what makes a tight request no harder to score on than a loose one.
     Differentiable, and batched over any leading dimension.
+
+    `position_weight` of 0 scores the size alone. The focus uses that: where the spot
+    lands is a corrector's job and a linear one, and leaving it in the objective only
+    tempts the quadrupoles into fixing a 2 mm offset by distorting the optics, which
+    they can do and which ruins the size. The position is put right afterwards, in
+    one shot, by the magnets that actually move it.
     """
     scale = target[2:].mean()
     error = (moments - target).abs() / scale
-    total = (error[..., 0] + error[..., 1]) / 2 + (error[..., 2] + error[..., 3]) / 2
+    total = (error[..., 2] + error[..., 3]) / 2
+    if position_weight:
+        total = total + position_weight * (error[..., 0] + error[..., 1]) / 2
     return total.clamp(max=cap)
 
 
@@ -207,6 +218,8 @@ class Planner:
         rng: np.random.Generator,
         trust: float | None = None,
         explore: bool = True,
+        measured_at: np.ndarray | None = None,
+        position_weight: float = 1.0,
     ) -> Plan:
         """Knob settings that bring the readout closer to what was asked for.
 
@@ -227,17 +240,24 @@ class Planner:
         converging, where the gradient alone knows which way to go.
         """
         trust = self.config.trust_region if trust is None else trust
-        anchor = self._anchor(knobs, values, state, measured)
-        low, high = knobs.trust_region(values, trust)
+        # `values` is where the search starts, which a policy may have moved away
+        # from the machine; `measured_at` is where the magnets actually are, and is
+        # what the anchor and the trust region have to be about. The reading belongs
+        # to the real setting, and a shot may only move so far from it however
+        # ambitious the suggestion.
+        at = values if measured_at is None else np.asarray(measured_at, dtype=float)
+        anchor = self._anchor(knobs, at, state, measured)
+        low, high = knobs.trust_region(at, trust)
+        values = knobs.clip(np.clip(values, low, high))
         target_t = torch.tensor(target, dtype=DTYPE)
 
         best, cost = values.copy(), float("inf")
         if explore:
             best, cost = self._cem(
-                knobs, values, state, target_t, anchor, low, high, rng
+                knobs, values, state, target_t, anchor, low, high, rng, position_weight
             )
         best, cost = self._descend(
-            knobs, best, state, target_t, anchor, low, high, cost, trust
+            knobs, best, state, target_t, anchor, low, high, cost, trust, position_weight
         )
 
         with torch.no_grad():
@@ -263,7 +283,7 @@ class Planner:
             )
         return torch.tensor(measured, dtype=DTYPE) - readings.planning_moments()
 
-    def _cost(self, readings, target, anchor) -> torch.Tensor:
+    def _cost(self, readings, target, anchor, position_weight: float = 1.0) -> torch.Tensor:
         """What a candidate is worth: how far off the request, plus what it risks.
 
         The first two terms are the benchmark's own score — the mismatch against the
@@ -278,12 +298,14 @@ class Planner:
         a tune on the edge will not survive the next shot's jitter, and because the
         twin's prediction is least trustworthy exactly there.
         """
-        mismatch = benchmark_mismatch(readings.planning_moments() + anchor, target)
+        mismatch = benchmark_mismatch(
+            readings.planning_moments() + anchor, target, position_weight=position_weight
+        )
         missing = TRANSMISSION_WEIGHT * (1.0 - readings.transmission)
         lost = (1.0 - readings.on_screen) * LOST_BEAM_COST
         return mismatch + missing + lost + SCRAPE_WEIGHT * readings.scrape
 
-    def _cem(self, knobs, values, state, target, anchor, low, high, rng) -> tuple:
+    def _cem(self, knobs, values, state, target, anchor, low, high, rng, position_weight=1.0) -> tuple:
         """Cross-entropy method: sample, keep the best, resample around them."""
         config = self.config
         mean = values.copy()
@@ -301,7 +323,7 @@ class Planner:
                     overrides=self._batched_overrides(knobs, population),
                     batch=len(population),
                 )
-                costs = self._cost(readings, target, anchor).numpy()
+                costs = self._cost(readings, target, anchor, position_weight).numpy()
             # A candidate wild enough to make the twin produce nothing at all is
             # simply the worst candidate, not a reason to stop. Ranking it as
             # infinite keeps it out of the elite set and out of the next mean.
@@ -312,7 +334,7 @@ class Planner:
                 best_cost, best = float(costs.min()), population[int(np.argmin(costs))]
         return best, best_cost
 
-    def _descend(self, knobs, values, state, target, anchor, low, high, cost, trust) -> tuple:
+    def _descend(self, knobs, values, state, target, anchor, low, high, cost, trust, position_weight=1.0) -> tuple:
         """Adam on the knobs, straight through Cheetah, to polish CEM's answer.
 
         Knobs are stepped in units of their own natural step so one learning rate
@@ -348,9 +370,15 @@ class Planner:
                 },
                 soft=SOFT_APERTURE,
             )
-            loss = self._cost(readings, target, anchor)
+            loss = self._cost(readings, target, anchor, position_weight)
+            # A candidate the twin could not evaluate is the worst candidate, not a
+            # reason to reject every later one: comparing against NaN is always
+            # False, so without this a single bad first step leaves `best_cost` at
+            # infinity and the whole shot is thrown away having moved nothing.
             value = float(loss.detach())
-            if value < best_cost:
+            if not np.isfinite(value):
+                value = np.inf
+            if value < best_cost or not np.isfinite(best_cost):
                 best_cost, best = value, native.detach().numpy().copy()
 
             loss.backward()

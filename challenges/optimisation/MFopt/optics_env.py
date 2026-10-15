@@ -5,12 +5,13 @@ at the readout screen, three questions an optimiser needs before it touches the
 machine:
 
 1. **Which optics?** The quadrupole k1s that give that spot. They start from the
-   matched family in `optics_matching/` (`MatchedOptics`), whose 42 upstream
-   strengths are a retuned prefix that carries the beam through the apertures. The
-   family was matched in xsuite with the VBC off and L4H off, so in this
-   environment's model (VBC on, L4H on, Cheetah) its four final-focus strengths
-   miss the requested spot by up to a factor of six. They are re-matched here, in
-   an error-free copy of the environment, within the environment's magnet limits.
+   144 nodes rematched with the VBC on (`optics_matching_vbc_on/`, 131.7 mrad),
+   interpolated in log size. Those were fitted in second-order Cheetah with L4H
+   powered and without magnet limits; the environment tracks at second order with
+   L4H a drift, and clips every magnet to what 100 A reaches. So the four
+   final-focus strengths are re-matched here, in an error-free copy of the
+   environment, within those limits. Below about 0.13 mm in x the nodes need FEH
+   Q2 beyond its limit, and the re-match stops at the limit.
 2. **Which quadrupoles matter?** The SVD of the weighted response of ln(beam size)
    at every screen and the readout to every quadrupole, at that optics. Rows and
    weights follow `SizeModes` (the readout carries half of the squared weight), but
@@ -34,6 +35,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 import numpy as np
+from scipy.interpolate import RegularGridInterpolator
 from scipy.optimize import least_squares
 
 CHALLENGE_DIR = Path(__file__).resolve().parents[1]
@@ -41,9 +43,56 @@ for path in (CHALLENGE_DIR, CHALLENGE_DIR / "RL_framework"):
     if str(path) not in sys.path:
         sys.path.insert(0, str(path))
 
-from optics_matching import MatchedOptics, SizeModes  # noqa: E402
+from optics_matching import SizeModes  # noqa: E402
 from rl_framework.config import RLConfig  # noqa: E402
-from rl_framework.envs.sim_env import BPM_TAG, SCREEN_TAG, SimEnv  # noqa: E402
+from rl_framework.envs.sim_env import (  # noqa: E402
+    BPM_TAG,
+    DTYPE,
+    SCREEN_TAG,
+    VBC_EDGE,
+    SimEnv,
+)
+
+# `batched.py` takes the SimEnv names through this module, which puts RL_framework
+# on the path first.
+__all__ = ["BPM_TAG", "DTYPE", "SCREEN_TAG", "VBC_EDGE", "OpticsEnv", "TargetOptics"]
+
+# `batched.py` takes the SimEnv names through this module, which puts RL_framework
+# on the path first.
+__all__ = ["BPM_TAG", "DTYPE", "SCREEN_TAG", "VBC_EDGE", "OpticsEnv", "TargetOptics"]
+
+# The 144 nodes rematched with the VBC on at 131.7 mrad (second-order Cheetah,
+# apertures): Eiad's 42-quad prefix kept, the 30 quads after the VBC refitted.
+NODES = CHALLENGE_DIR / "optics_matching_vbc_on" / "results" / "rematched_grid_vbc_on.npz"
+
+
+class RematchedNodes:
+    """The VBC-on node table, interpolated bilinearly in ln(sigma_x), ln(sigma_y).
+
+    Requests outside 0.1 to 20 mm are clamped to the grid. `feasible` marks the
+    nodes the rematch closed (transmission >= 95 %, size error <= 5 %)."""
+
+    def __init__(self, path: Path = NODES):
+        with np.load(path) as data:
+            self.quadrupoles = data["quadrupoles"].tolist()
+            self.axis = data["spot_sizes_m"]
+            self.k1 = data["k1"]
+            self.transmission = data["transmission"]
+            achieved = data["actual_sizes_m"]
+        target = np.stack(np.meshgrid(self.axis, self.axis, indexing="ij"), axis=-1)
+        error = np.abs(achieved / target - 1).max(axis=-1)
+        self.feasible = (self.transmission >= 0.95) & (error <= 0.05)
+        log = np.log(self.axis)
+        self._k1 = RegularGridInterpolator((log, log), self.k1)
+
+    def clamp(self, sigma_x: float, sigma_y: float) -> tuple[float, float]:
+        lo, hi = self.axis[0], self.axis[-1]
+        return float(np.clip(sigma_x, lo, hi)), float(np.clip(sigma_y, lo, hi))
+
+    def evaluate(self, sigma_x: float, sigma_y: float) -> dict[str, float]:
+        point = np.log(self.clamp(sigma_x, sigma_y))
+        return dict(zip(self.quadrupoles, self._k1(point)[0].tolist()))
+
 
 # The magnets the matched family varies with the requested spot; the other 42 are
 # a fixed prefix.
@@ -54,6 +103,11 @@ READOUT_WEIGHT = 0.5
 # Finite-difference steps: k1 in m^-2, corrector kicks in rad.
 QUAD_STEP = 0.05
 CORRECTOR_STEP = 2e-5
+# Tracks the final-focus re-match may spend.
+MATCH_EVALUATIONS = 60
+# Particles the error-free twin tracks: half of the environment's 10,000, which
+# keeps rms sizes to about 1 % and halves the cost of every response.
+TWIN_PARTICLES = 5_000
 
 
 @dataclass
@@ -80,8 +134,8 @@ class TargetOptics:
 
     target: tuple[float, float]  # requested (sigma_x, sigma_y), metres
     k1: dict[str, float]  # all 46 quadrupoles
-    quadrupoles: Modes
-    correctors: Modes  # both planes, `<corrector>_h` and `<corrector>_v`
+    quadrupoles: Modes | None  # None when asked for without modes
+    correctors: Modes | None  # both planes, `<corrector>_h` and `<corrector>_v`
     achieved: tuple[float, float]  # (sigma_x, sigma_y) in the model, metres
     transmission: float  # in the model, to the readout
     clipped: list[str] = field(default_factory=list)  # pinned at a limit
@@ -106,9 +160,11 @@ class TargetOptics:
 class OpticsEnv(SimEnv):
     """`SimEnv` with `optics_for_target`. Episodes behave exactly as in `SimEnv`."""
 
-    def __init__(self, config: RLConfig | None = None):
+    def __init__(self, config: RLConfig | None = None,
+                 twin_particles: int | None = TWIN_PARTICLES):
         super().__init__(config or RLConfig())
-        self._matched = MatchedOptics()
+        self.twin_particles = twin_particles
+        self.nodes = RematchedNodes()
         self._size_modes = SizeModes()
         self._twin: SimEnv | None = None
         self._optics_cache: dict[tuple[float, float, float], TargetOptics] = {}
@@ -118,13 +174,15 @@ class OpticsEnv(SimEnv):
     @property
     def twin(self) -> SimEnv:
         """An error-free copy of this environment: the nominal beam, no survey
-        error and no shot jitter, with the same lattice, backend and apertures."""
+        error and no shot jitter, with the same lattice, backend and apertures,
+        tracking `twin_particles` particles."""
         if self._twin is None:
             config = RLConfig(**{**self.config.__dict__,
                                  "beam_variation": 0.0,
                                  "misalignment_variation": 0.0,
                                  "power_supply_ripple": 0.0,
-                                 "bpm_noise": 0.0})
+                                 "bpm_noise": 0.0,
+                                 "num_particles": self.twin_particles})
             self._twin = SimEnv(config)
             self._twin.reset(seed=0)
         return self._twin
@@ -180,7 +238,7 @@ class OpticsEnv(SimEnv):
         names = list(FINAL_FOCUS)
         low = np.array([self.twin._knobs[n].low for n in names])
         high = np.array([self.twin._knobs[n].high for n in names])
-        x0 = np.clip([start[n] for n in names], low, high)
+        x0 = np.clip([start.get(n, self.twin._knobs[n].value) for n in names], low, high)
 
         def residual(k):
             readings = self._probe({**start, **dict(zip(names, k))})
@@ -193,7 +251,7 @@ class OpticsEnv(SimEnv):
 
         fit = least_squares(residual, x0, bounds=(low, high), diff_step=1e-3,
                             x_scale=np.maximum(np.abs(x0), 1.0), xtol=1e-6,
-                            ftol=1e-6, max_nfev=60)
+                            ftol=1e-6, max_nfev=MATCH_EVALUATIONS)
         k = {**start, **dict(zip(names, fit.x))}
         clipped = [n for n, v, lo, hi in zip(names, fit.x, low, high)
                    if min(v - lo, hi - v) < 1e-6 * (hi - lo)]
@@ -202,7 +260,7 @@ class OpticsEnv(SimEnv):
     def _modes(self, k1, knob_names, step, columns_of, fraction) -> Modes:
         """Weighted central-difference response of the readings to each knob."""
         base = self._probe(k1)
-        screens, weights = self._rows(base["names"])
+        _, weights = self._rows(base["names"])
         rows = [f"{name}:{plane}" for name, w in zip(base["names"], weights) if w
                 for plane in ("x", "y")]
         columns = []
@@ -222,15 +280,21 @@ class OpticsEnv(SimEnv):
                      scores=dict(zip(knob_names, scores.tolist())))
 
     def optics_for_target(self, sigma_x: float, sigma_y: float,
-                          fraction: float = 0.99) -> TargetOptics:
+                          fraction: float = 0.99, modes: bool = True) -> TargetOptics:
         """The optics for a requested rms spot (metres) at the readout screen, and
-        the quadrupole and corrector modes about it. See the module docstring."""
-        key = (float(sigma_x), float(sigma_y), float(fraction))
+        the quadrupole and corrector modes about it. See the module docstring.
+
+        `modes=False` skips the two SVDs (the 208 finite-difference tracks) and
+        returns the optics alone, in about a quarter of the time."""
+        key = (float(sigma_x), float(sigma_y), float(fraction), modes)
+        if not modes:
+            full = (float(sigma_x), float(sigma_y), float(fraction), True)
+            if full in self._optics_cache:
+                return self._optics_cache[full]
         if key in self._optics_cache:
             return self._optics_cache[key]
-        lo, hi = self._matched.axis[0], self._matched.axis[-1]
-        inside = (float(np.clip(sigma_x, lo, hi)), float(np.clip(sigma_y, lo, hi)))
-        start = self._matched.evaluate(*inside)["settings"]
+        inside = self.nodes.clamp(sigma_x, sigma_y)
+        start = self.nodes.evaluate(*inside)
         k1, clipped = self._match((sigma_x, sigma_y), start)
 
         def log_size(plus, minus, base, step):
@@ -239,11 +303,12 @@ class OpticsEnv(SimEnv):
         def centroid(plus, minus, base, step):
             return (plus["stats"][:, :2] - minus["stats"][:, :2]) / (2 * step)
 
-        quads = self._modes(k1, list(self._matched.quadrupoles), QUAD_STEP,
-                            log_size, fraction)
-        correctors = [n for n in self.twin.magnet_names if n.endswith(("_h", "_v"))
-                      and "hvcor" in n]
-        kicks = self._modes(k1, correctors, CORRECTOR_STEP, centroid, fraction)
+        quads = kicks = None
+        if modes:
+            quads = self._modes(k1, list(self.nodes.quadrupoles), QUAD_STEP,
+                                log_size, fraction)
+            kicks = self._modes(k1, self.corrector_names, CORRECTOR_STEP,
+                                centroid, fraction)
         final = self._probe(k1)
         readout = final["stats"][final["names"].index(self.config.target_screen)]
         result = TargetOptics(
@@ -254,6 +319,12 @@ class OpticsEnv(SimEnv):
             size_modes=self._size_modes.evaluate(*inside))
         self._optics_cache[key] = result
         return result
+
+    @property
+    def corrector_names(self) -> list[str]:
+        """Every corrector plane the agent may set, `_h` and `_v`."""
+        return [n for n in self.magnet_names
+                if self._knobs[n].prop in ("horizontal_angle", "vertical_angle")]
 
     def optics_action(self, optics: TargetOptics) -> dict:
         """An action for `step()` that loads the optics' quadrupoles."""

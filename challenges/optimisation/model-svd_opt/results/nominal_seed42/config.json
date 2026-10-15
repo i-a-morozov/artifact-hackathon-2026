@@ -1,0 +1,20 @@
+{
+  "seed": 42,
+  "target": [
+    0.001,
+    0.001
+  ],
+  "backend": "cheetah",
+  "particles": 10000,
+  "repeats": 3,
+  "thread_budget": 40,
+  "optics_budget": 35,
+  "center_budget": 25,
+  "beam_variation": 1.0,
+  "misalignment_variation": 1.0,
+  "beam_jitter": 0.1,
+  "ripple": 0.001,
+  "bpm_noise": 0.0,
+  "steering_cap": 0.002,
+  "quad_cap": 2.0
+}

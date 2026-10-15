@@ -1,0 +1,46 @@
+concurrent.futures.process._RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/Users/Hamwi/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/concurrent/futures/process.py", line 264, in _process_worker
+    r = call_item.fn(*call_item.args, **call_item.kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Hamwi/Documents/projects/AISSAI/optimisation/model-svd_opt/run_ensemble.py", line 84, in worker
+    atomic_json(directory/'episode.json',result)
+  File "/Users/Hamwi/Documents/projects/AISSAI/optimisation/model-svd_opt/run_ensemble.py", line 28, in atomic_json
+    with tmp.open('w') as f:json.dump(data,f,allow_nan=False,separators=(',',':'))
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Hamwi/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/json/__init__.py", line 179, in dump
+    for chunk in iterable:
+                 ^^^^^^^^
+  File "/Users/Hamwi/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/Users/Hamwi/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/Users/Hamwi/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/Users/Hamwi/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  [Previous line repeated 1 more time]
+  File "/Users/Hamwi/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/Users/Hamwi/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type ndarray is not JSON serializable
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/Hamwi/Documents/projects/AISSAI/optimisation/model-svd_opt/run_ensemble.py", line 161, in <module>
+    metadata['wall_time_including_combined_json_export_s']=time.perf_counter()-started
+                        ^^^^^^
+  File "/Users/Hamwi/Documents/projects/AISSAI/optimisation/model-svd_opt/run_ensemble.py", line 150, in main
+    atomic_json(out/'metadata.json',metadata);episodes=[];started=time.perf_counter()
+                    ^^^^^^^^^^^^^^^
+  File "/Users/Hamwi/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/Hamwi/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+TypeError: Object of type ndarray is not JSON serializable

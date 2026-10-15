@@ -4,7 +4,7 @@ Figures for the CLARA hackathon talk, one section per figure: path (relative to 
 
 ## The deck
 
-`talk.html` is the talk: 18 slides, 16:9, reveal.js, built from `notes.txt` and the figures here. Serve this folder and open it:
+`talk.html` is the talk: 23 slides, 16:9, reveal.js, built from `notes.txt` and the figures here. Serve this folder and open it:
 
 ```bash
 python3 -m http.server -d . 8000     # then http://localhost:8000/talk.html
@@ -17,6 +17,10 @@ Keys: arrows or space to move, `f` fullscreen, `o` overview, `b` blank, `s` spea
 reveal.js 5.1.0 is vendored in `talk_assets/reveal/` (`reveal.js`, `reveal.css`, `theme/white.css`), so the deck needs no network. The one local change is the webfont `@import` removed from `white.css`; it falls back to the system sans.
 
 **The "seven workstreams" slide is the live animation.** It is `workflow_animation.html` in a reveal background iframe, so it animates in the browser and replays every time the slide is entered (reveal reloads background iframes on each visit). Click it to replay by hand. Edit the animation and the slide follows; there is nothing to re-render.
+
+Figures used: `geometry/line_geometry_apertures_nominal_beam.png`, `transmission_along_s/losses_by_section_vbc_on.png`, `optics_nodes/transmission_matrix_vbc_on.png`, `optics_nodes/rematch_vbc_on.png`, `mfopt/mfopt_workflow.svg` (an `<img>`, so its internal CSS is honoured and it stays sharp at any size) and `screens/`. `screens/` holds copies of `image_processing/Noisy_beam.png` and `Weak_beam.png`: the deck must not reference paths above its own folder, or serving this directory breaks the images.
+
+Numbers on the slides come from `MFopt/README.md` (30 days, seeds 1000-1029), `MBRL_opt/README.md` and its `results*.json` (32 episodes, seeds 1234-1265), `section-opt/section_review.md` (the S04 method comparison) and `orbit_matching/README.md` (the Cheetah/xsuite transmission cross-check). Re-run those and the slides need re-reading.
 
 ### Stills of the animation
 
@@ -193,3 +197,11 @@ python3 -I scripts/make_anim_frames.py --theme dark --fps 12
 - A single nominal beam is used, with no errors or jitter, so these are ideal transmissions.
 - The transmission matrix (final transmission per node) belongs to the "Optics nodes transmission map" thread. The end points of these curves should agree with it when that thread also uses second-order tracking.
 - The "Optics nodes transmission map" thread uses a slightly different second-order setup: dipole edges are also second order (`second_order_edge`), correctors stay linear, and it tracks 50k particles (`CLARA_cheetah_second_order.json`, in the project files of that study). The two setups agree within statistics: nominal VBC on is 0.5870 there and 0.5871 here, and node (0,0) is 0.98 in both.
+
+## MFopt episode workflow
+
+`mfopt/mfopt_workflow.svg` shows one `SimEnv` episode from `reset` to the benchmark score, as `MFopt/run_baselines.py --policies mfbo` runs it. Purple boxes cost no step: they run in the error-free Cheetah twin. Blue and teal boxes are machine shots, one step each. Stage A loads the target optics, threads the beam when it is lost, then steers the orbit and the centroid. Stage D (MF-BO) treats the twin as the low fidelity and the machine as the high fidelity, and stops when the expected improvement is worth less than one more step.
+
+Key numbers (30 default days, seeds 1000-1029): stage A scores a mean of 0.49, with 30 % of days within 10 %, in about 5 steps. Stage A plus MF-BO scores 0.30 to 0.32, with 73 to 80 % within 10 %, in about 9 steps.
+
+Slide message: the model does most of the work for free, and the machine is spent only on what the model gets wrong.

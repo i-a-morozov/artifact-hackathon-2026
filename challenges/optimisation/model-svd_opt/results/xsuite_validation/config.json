@@ -1,0 +1,20 @@
+{
+  "seed": 42,
+  "target": [
+    0.001,
+    0.001
+  ],
+  "backend": "xsuite",
+  "particles": 1000,
+  "repeats": 2,
+  "thread_budget": 16,
+  "optics_budget": 12,
+  "center_budget": 10,
+  "beam_variation": 1.0,
+  "misalignment_variation": 1.0,
+  "beam_jitter": 0.1,
+  "ripple": 0.001,
+  "bpm_noise": 0.0,
+  "steering_cap": 0.002,
+  "quad_cap": 2.0
+}

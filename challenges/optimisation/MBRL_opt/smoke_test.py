@@ -91,7 +91,7 @@ def test_fidelity() -> None:
     rl.beam_variation = 0.0
     rl.misalignment_variation = 0.0
     env = SimEnv(rl)
-    twin = CheetahTwin(num_particles=PARTICLES)
+    twin = CheetahTwin.for_env(env, PARTICLES)
 
     check("twin and SimEnv agree on the BPM list", twin.bpm_names == env.bpm_names)
     check("twin and SimEnv agree on the screens", twin.screen_names == env.screen_names)
@@ -125,7 +125,7 @@ def test_fidelity() -> None:
 
 def test_batching_and_gradients() -> None:
     print("\n2. the twin plans in batches and differentiates")
-    twin = CheetahTwin(num_particles=PARTICLES)
+    twin = CheetahTwin.for_env(SimEnv(RLConfig()), PARTICLES)
     size = 128
     values = torch.linspace(-8.0, 8.0, size, requires_grad=True)
     start = time.time()
@@ -203,7 +203,7 @@ def test_pipeline() -> None:
     rl.num_particles = 2_000
     rl.screen_shape = config.screen_shape
     env = OpticsEnv(rl)
-    twin = CheetahTwin(num_particles=config.twin_particles)
+    twin = CheetahTwin.for_env(env, config.twin_particles)
     agent = MBRLAgent(config, twin)
 
     for seed in (0, 1):

@@ -1,0 +1,8 @@
+Building nominal response controls
+Thread 1: BPM prefix 31->31/31, IP=True
+bo: optics matching
+bo: final corrector centering
+rcds: optics matching
+rcds: final corrector centering
+bo: completed; transmission=0.970, centroid=(0.067, -0.057) mm, sigma=(1.415, 0.978) mm
+rcds: completed; transmission=0.975, centroid=(0.097, -0.123) mm, sigma=(1.222, 1.137) mm

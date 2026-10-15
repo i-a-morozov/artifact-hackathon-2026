@@ -1,0 +1,103 @@
+{
+  "output": "/Users/Hamwi/Documents/projects/AISSAI/optimisation/model-svd_opt/results/cheetah_100_episodes/results.json",
+  "aggregate": {
+    "episodes": 100,
+    "episode_status": {
+      "finished": 98,
+      "error": 2
+    },
+    "total_steps": 38434,
+    "total_reset_shots": 299,
+    "total_screen_changes": 0,
+    "episode_wall_time_s": {
+      "n": 100,
+      "mean": 77.14643548835302,
+      "median": 77.35629460401833,
+      "std": 8.806323276016977,
+      "min": 8.33563654194586,
+      "max": 91.61709533282556
+    },
+    "branches": {
+      "bo": {
+        "status": {
+          "completed": 99,
+          "error": 1
+        },
+        "final_score_all_available": {
+          "n": 100,
+          "mean": 1.5645021042813152,
+          "median": 1.5082873190407784,
+          "std": 0.2565922275663366,
+          "min": 1.2564252091243648,
+          "max": 2.432804882102227
+        },
+        "final_score_completed": {
+          "n": 99,
+          "mean": 1.5657348363391317,
+          "median": 1.515937854471848,
+          "std": 0.2576002525878737,
+          "min": 1.2564252091243648,
+          "max": 2.432804882102227
+        },
+        "steps": {
+          "n": 100,
+          "mean": 190.14,
+          "median": 192.0,
+          "std": 18.6,
+          "min": 6,
+          "max": 192
+        },
+        "wall_time_s": {
+          "n": 98,
+          "mean": 35.73186789414066,
+          "median": 35.76557549997233,
+          "std": 0.739983914108496,
+          "min": 31.778996666893363,
+          "max": 36.913981874939054
+        },
+        "total_screen_changes": 0
+      },
+      "rcds": {
+        "status": {
+          "completed": 98,
+          "skipped": 1,
+          "error": 1
+        },
+        "final_score_all_available": {
+          "n": 99,
+          "mean": 1.513516732413696,
+          "median": 1.4008480219400592,
+          "std": 0.3722583784097396,
+          "min": 1.238845719648271,
+          "max": 3.7342835631331424
+        },
+        "final_score_completed": {
+          "n": 98,
+          "mean": 1.4908558463859467,
+          "median": 1.3956327750494004,
+          "std": 0.29772933755140685,
+          "min": 1.238845719648271,
+          "max": 2.772765647407384
+        },
+        "steps": {
+          "n": 100,
+          "mean": 188.2,
+          "median": 192.0,
+          "std": 26.735517178238368,
+          "min": 0,
+          "max": 192
+        },
+        "wall_time_s": {
+          "n": 98,
+          "mean": 34.51332848085024,
+          "median": 34.632683395408094,
+          "std": 0.9689397153597803,
+          "min": 29.158377666957676,
+          "max": 35.798422208987176
+        },
+        "total_screen_changes": 0
+      }
+    }
+  },
+  "wall_time_s": 1035.4034347501583
+}

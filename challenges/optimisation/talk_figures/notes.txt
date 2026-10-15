@@ -22,8 +22,13 @@ presentation:
   - Set nominal optics from lookup table (optics matching)
   - SVD of the correctors vs BPM for the target beam gives us the most significant control variables to center the current beam at the selected optics
   - Do steering simple optimsiation - typically 1 iteration, worst case 4
-  - Coupled optimisation - Use SVD again on the combined correctors and steerers to find the significant control variables for focussing 
-  - Use the numeric optimisation or RL model to tweak the reference tune
+  - Focus optimisation - Use SVD again on the combined correctors and quadrupoles to find the significant control variables for focussing 
+  - Use the numeric optimisation or RL model to tweak the optics matched tune, using focussing only
   - Use the robust screen measure to read screen images
-  - Tweak and read the target screen until a good match
-  
+  - Tweak and read the target screen until a good match -^
+  - Finally one last round of SVD on the correctors to steer with the focussed optics
+
+
+Image processing note:
+- Noisy beam image is an example of the cleaning of the data
+- Weak beam image is an example of a bad clean, where data is discarded

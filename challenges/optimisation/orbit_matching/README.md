@@ -14,6 +14,32 @@ The source grid was rematched with L4H powered. **Its quadrupoles are not
 rematched again when L4H is removed.** Target sizes label the requested settings;
 they are not assertions that those RMS sizes are achieved with L4H off.
 
+## Current status — 15 October 2026
+
+The VBC-on update is complete. The active runtime calibration is **schema 2,
+L4H drift**, with separate Cheetah and Xsuite controls. Its saved configuration
+identity matches the current optics provider.
+
+| Deliverable | Status | Output |
+|---|---|---|
+| Transmission with supplied, powered L4H | Complete: 144 nodes per backend, 200,000 particles per node | [Comparison plot](results/vbc_on/transmission_comparison.png) |
+| Separate transmission with L4H a drift | Complete: 144 nodes per backend, same bunch and quadrupoles | [Comparison plot](results/vbc_on_l4h_off/transmission_comparison.png) |
+| L4H-drift horizontal and vertical orbit matrices | Complete for all 144 nodes in both backends | [Matrices and CSV exports](results/vbc_on_l4h_off/orbit/) |
+| Weighted right-singular vectors and singular values | Complete: IP weight 5, each BPM weight 1 | [SVD comparison](results/vbc_on_l4h_off/orbit/orbit_svd_comparison.png) |
+| Numerical and interface checks | Passed: all 576 backend/plane/node combinations and six compatibility tests | [API checks](results/vbc_on_l4h_off/orbit/api_validation.json), [compatibility checks](results/vbc_on_l4h_off/orbit/compatibility_validation.json) |
+
+The operational resolved mode counts are **26 horizontal and 27 vertical**.
+Transmission medians are approximately 98.95%, but three nodes in each
+backend/cavity case transmit less than 10%. Readout-validity flags accompany
+the current controls.
+
+The remaining scope limits are unchanged: removing L4H does not trigger a
+new quadrupole rematch; orbit matrices describe the linear reference orbit;
+and off-grid transmission and achieved target sizes have not been validated.
+The controls therefore do not establish transmission-aware centroid correction
+for strongly scraped bunches. Details, data layouts and regeneration commands
+follow below.
+
 ## Full-bunch transmission: both lattices and both L4H cases
 
 Each of the 144 nodes is tracked with the **same complete 200,000-particle

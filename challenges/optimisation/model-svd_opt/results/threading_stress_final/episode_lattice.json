@@ -1,0 +1,6859 @@
+{
+  "version": "cheetah-0.8",
+  "title": "CLARA_FEBE",
+  "info": "This is a placeholder lattice description",
+  "root": "CLARA_FEBE",
+  "elements": {
+    "ebt_inj_lsr_shut_01": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0,
+        "metadata": {}
+      }
+    ],
+    "ebt_inj_lsr_shut_02": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0,
+        "metadata": {}
+      }
+    ],
+    "hrg1_drift_1": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0144599999999998,
+        "metadata": {}
+      }
+    ],
+    "cla_pi_lsr_shut_01": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0,
+        "metadata": {}
+      }
+    ],
+    "hrg1_drift_2": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0048199999999999,
+        "metadata": {}
+      }
+    ],
+    "cla_hrg1_sim_aper_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_hrg1_gun_cav_01": [
+      "Cavity",
+      {
+        "length": 0.32,
+        "voltage": 5000000.0,
+        "phase": 9.0,
+        "frequency": 2998500000.0,
+        "cavity_type": "standing_wave",
+        "metadata": {}
+      }
+    ],
+    "hrg1_drift_3": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.31759,
+        "metadata": {}
+      }
+    ],
+    "ebt_hrg1_mag_sol_01": [
+      "Solenoid",
+      {
+        "length": 0.32,
+        "k": 0.345,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "metadata": {}
+      }
+    ],
+    "cla_s01_sim_aper_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s01_drift_1": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.3055400000000002,
+        "metadata": {}
+      }
+    ],
+    "s01_drift_2": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2959000000000005,
+        "metadata": {}
+      }
+    ],
+    "cla_s01_mag_hvcor_01": [
+      "CombinedCorrector",
+      {
+        "length": 0.03,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "s01_drift_3": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.3511,
+        "metadata": {}
+      }
+    ],
+    "cla_s01_dia_wcm_01": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0,
+        "metadata": {}
+      }
+    ],
+    "s01_drift_4": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0750100000000001,
+        "metadata": {}
+      }
+    ],
+    "cla_s01_mag_hvcor_02": [
+      "CombinedCorrector",
+      {
+        "length": 0.075,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "s01_drift_5": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.042945,
+        "metadata": {}
+      }
+    ],
+    "cla_s01_dia_bpm_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s01_drift_6": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0862449999999999,
+        "metadata": {}
+      }
+    ],
+    "cla_s01_dia_scr_01": [
+      "Screen",
+      {
+        "resolution": [
+          2160,
+          2560
+        ],
+        "pixel_size": [
+          6.499999926745659e-06,
+          6.499999926745659e-06
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_l01_sim_aper_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "l01_drift_1": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1981477653166949,
+        "metadata": {}
+      }
+    ],
+    "cla_l01_lin_cav_01": [
+      "Cavity",
+      {
+        "length": 2.03333,
+        "voltage": 31579388.847791173,
+        "phase": 16.0,
+        "frequency": 2998500000.0,
+        "cavity_type": "standing_wave",
+        "metadata": {}
+      }
+    ],
+    "cla_s02_sim_aper_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_s02_mag_hvcor_01": [
+      "CombinedCorrector",
+      {
+        "length": 0.076607,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "s02_drift_1": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0147329989361249,
+        "metadata": {}
+      }
+    ],
+    "cla_s02_mag_quad_01": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.12868478212775,
+        "k1": 14.33671761566254,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s02_drift_2": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.038645218936125,
+        "metadata": {}
+      }
+    ],
+    "cla_s02_dia_bpm_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s02_drift_3": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2336,
+        "metadata": {}
+      }
+    ],
+    "cla_s02_mag_quad_02": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.126817,
+        "k1": -14.221465474502477,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s02_drift_4": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0992730000000002,
+        "metadata": {}
+      }
+    ],
+    "cla_s02_dia_scr_01": [
+      "Screen",
+      {
+        "resolution": [
+          2160,
+          2560
+        ],
+        "pixel_size": [
+          1.2329999663052149e-05,
+          1.2329999663052149e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s02_drift_5": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1482400000000004,
+        "metadata": {}
+      }
+    ],
+    "cla_s02_mag_hvcor_02": [
+      "CombinedCorrector",
+      {
+        "length": 0.03,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "s02_drift_6": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0755500000000007,
+        "metadata": {}
+      }
+    ],
+    "cla_s02_dia_ecol_01": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.35,
+        "metadata": {}
+      }
+    ],
+    "cla_s02_sim_aper_02": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s02_drift_7": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1219400000000004,
+        "metadata": {}
+      }
+    ],
+    "cla_s02_mag_hvcor_03": [
+      "CombinedCorrector",
+      {
+        "length": 0.03,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "s02_drift_8": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1652700000000005,
+        "metadata": {}
+      }
+    ],
+    "cla_s02_dia_scr_02": [
+      "Screen",
+      {
+        "resolution": [
+          2160,
+          2560
+        ],
+        "pixel_size": [
+          1.2200000128359534e-05,
+          1.2200000128359534e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s02_drift_9": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1526999999999994,
+        "metadata": {}
+      }
+    ],
+    "cla_s02_mag_quad_03": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.127242,
+        "k1": 18.558165039671817,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s02_drift_10": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2726679999999994,
+        "metadata": {}
+      }
+    ],
+    "cla_s02_mag_quad_04": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.127422,
+        "k1": -9.471158928126394,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s02_drift_11": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.6990880000000006,
+        "metadata": {}
+      }
+    ],
+    "cla_s02_mag_quad_05": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1007,
+        "k1": 2.4373837797830693,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s02_drift_12": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0253250000000005,
+        "metadata": {}
+      }
+    ],
+    "cla_s02_dia_bpm_02": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s02_drift_13": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0686249999999999,
+        "metadata": {}
+      }
+    ],
+    "cla_s02_dia_scr_03": [
+      "Screen",
+      {
+        "resolution": [
+          2160,
+          2560
+        ],
+        "pixel_size": [
+          1.4379999811353628e-05,
+          1.4379999811353628e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s02_drift_14": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0608425000000006,
+        "metadata": {}
+      }
+    ],
+    "cla_s02_mag_hvcor_04": [
+      "CombinedCorrector",
+      {
+        "length": 0.076607,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "cla_l02_sim_aper_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "l02_drift_1": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1209682149368172,
+        "metadata": {}
+      }
+    ],
+    "cla_l02_lin_cav_01": [
+      "Cavity",
+      {
+        "length": 4.06667,
+        "voltage": 87539819.51089449,
+        "phase": 23.0,
+        "frequency": 2998500000.0,
+        "cavity_type": "standing_wave",
+        "metadata": {}
+      }
+    ],
+    "l02_drift_2": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0321749999999987,
+        "metadata": {}
+      }
+    ],
+    "cla_l02_sim_aper_02": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_s03_sim_aper_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s03_drift_1": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.295,
+        "metadata": {}
+      }
+    ],
+    "cla_s03_dia_bpm_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s03_drift_2": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1930000000000014,
+        "metadata": {}
+      }
+    ],
+    "cla_s03_mag_quad_01": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.162,
+        "k1": -1.3521451352287557,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s03_drift_3": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2249999999999996,
+        "metadata": {}
+      }
+    ],
+    "cla_s03_mag_hvcor_01": [
+      "CombinedCorrector",
+      {
+        "length": 0.05,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "s03_drift_4": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0883000000000003,
+        "metadata": {}
+      }
+    ],
+    "cla_s03_dia_scr_01": [
+      "Screen",
+      {
+        "resolution": [
+          1200,
+          1920
+        ],
+        "pixel_size": [
+          2.4468999981763773e-05,
+          2.4468999981763773e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_l03_sim_aper_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "l03_drift_1": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1149693002501093,
+        "metadata": {}
+      }
+    ],
+    "cla_l03_lin_cav_01": [
+      "Cavity",
+      {
+        "length": 4.06667,
+        "voltage": 78785837.55980504,
+        "phase": 8.0,
+        "frequency": 2998500000.0,
+        "cavity_type": "standing_wave",
+        "metadata": {}
+      }
+    ],
+    "cla_s04_sim_aper_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_sim_mark_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_1": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1285680000000014,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_mag_hvcor_01": [
+      "CombinedCorrector",
+      {
+        "length": 0.05,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_2": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0395000000000039,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_mag_quad_01": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.162,
+        "k1": 0.758569737298239,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_3": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0754999999999981,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_dia_ict_01": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_4": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1300000000000026,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_dia_bpm_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_5": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1524999999999998,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_mag_quad_02": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.162,
+        "k1": 0.2759475138248083,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_6": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2132949999999987,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_dia_scr_01": [
+      "Screen",
+      {
+        "resolution": [
+          1200,
+          1920
+        ],
+        "pixel_size": [
+          2.399299955868628e-05,
+          2.399299955868628e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_7": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1247050000000023,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_mag_quad_03": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.162,
+        "k1": -0.31159956428032154,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_8": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1549319999999987,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_dia_bpm_02": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_9": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1830680000000022,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_mag_quad_04": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.162,
+        "k1": -0.1552715179919713,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_10": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2245000000000026,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_mag_hvcor_02": [
+      "CombinedCorrector",
+      {
+        "length": 0.05,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_11": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.078832000000002,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_dia_scr_02": [
+      "Screen",
+      {
+        "resolution": [
+          1200,
+          1920
+        ],
+        "pixel_size": [
+          2.3540000256616622e-05,
+          2.3540000256616622e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_12": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.7799680000000002,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_dia_scr_03": [
+      "Screen",
+      {
+        "resolution": [
+          1920,
+          1200
+        ],
+        "pixel_size": [
+          1.2649999916902743e-05,
+          1.2649999916902743e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_13": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1516319999999993,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_mag_hvcor_03": [
+      "CombinedCorrector",
+      {
+        "length": 0.05,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_14": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0675000000000026,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_dia_bpm_03": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_15": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.8375679999999974,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_dia_bpm_04": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_16": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1483000000000026,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_dia_scr_04": [
+      "Screen",
+      {
+        "resolution": [
+          1200,
+          1920
+        ],
+        "pixel_size": [
+          2.234900057374034e-05,
+          2.234900057374034e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_17": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.826632,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_dia_scr_05": [
+      "Screen",
+      {
+        "resolution": [
+          1200,
+          1920
+        ],
+        "pixel_size": [
+          2.3500999304815196e-05,
+          2.3500999304815196e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_18": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1380680000000005,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_mag_quad_05": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.162,
+        "k1": 0.2495546283484544,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_19": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.089500000000001,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_mag_hvcor_04": [
+      "CombinedCorrector",
+      {
+        "length": 0.05,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_20": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1985000000000028,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_mag_quad_06": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.162,
+        "k1": 0.4157948143953955,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_21": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1849999999999987,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_dia_bpm_05": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_22": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1530000000000022,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_mag_quad_07": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.162,
+        "k1": 0.468594612676401,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_23": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1494999999999998,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_mag_hvcor_05": [
+      "CombinedCorrector",
+      {
+        "length": 0.05,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_24": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1485000000000021,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_mag_quad_08": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.162,
+        "k1": -0.3580426015551142,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_25": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1550004999999999,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_dia_bpm_06": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s04_drift_26": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.176931500000002,
+        "metadata": {}
+      }
+    ],
+    "cla_s04_sim_mark_02": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_l4h_sim_aper_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "l4h_drift_1": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1211457670535758,
+        "metadata": {}
+      }
+    ],
+    "cla_l4h_lin_cav_01": [
+      "Drift",
+      {
+        "length": 0.75,
+        "tracking_method": "second_order"
+      }
+    ],
+    "cla_s05_sim_aper_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s05_drift_1": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2310680000000005,
+        "metadata": {}
+      }
+    ],
+    "cla_s05_mag_quad_01": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.162,
+        "k1": -1.1037040348070448,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s05_drift_2": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0716999999999999,
+        "metadata": {}
+      }
+    ],
+    "cla_s05_dia_ict_01": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0,
+        "metadata": {}
+      }
+    ],
+    "s05_drift_3": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1389320000000005,
+        "metadata": {}
+      }
+    ],
+    "cla_s05_mag_hvcor_01": [
+      "CombinedCorrector",
+      {
+        "length": 0.05,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "s05_drift_4": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0497380000000014,
+        "metadata": {}
+      }
+    ],
+    "cla_s05_dia_bpm_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s05_drift_5": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0537620000000025,
+        "metadata": {}
+      }
+    ],
+    "cla_s05_dia_scr_01": [
+      "Screen",
+      {
+        "resolution": [
+          1920,
+          1200
+        ],
+        "pixel_size": [
+          1.278000036109006e-05,
+          1.278000036109006e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s05_drift_6": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0877279999999985,
+        "metadata": {}
+      }
+    ],
+    "cla_s05_dia_bam_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s05_drift_7": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.136140000000001,
+        "metadata": {}
+      }
+    ],
+    "cla_s05_mag_quad_02": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.162,
+        "k1": 0.9689829785990334,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s05_drift_8": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1550000000000011,
+        "metadata": {}
+      }
+    ],
+    "cla_s05_dia_bpm_02": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s05_drift_9": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1050319999999978,
+        "metadata": {}
+      }
+    ],
+    "cla_s05_sim_mark_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_vbc_mag_dip_01": [
+      "Dipole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.200981,
+        "angle": -0.13169935,
+        "k1": 0.0,
+        "dipole_e1": 0.0,
+        "dipole_e2": -0.13169935,
+        "tilt": 0.0,
+        "gap": 0.032,
+        "gap_exit": 0.0,
+        "fringe_integral": 0.5,
+        "fringe_integral_exit": 0.0,
+        "fringe_at": "both",
+        "fringe_type": "second_order_edge",
+        "metadata": {}
+      }
+    ],
+    "vbc_drift_1": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 1.5067473818525952,
+        "metadata": {}
+      }
+    ],
+    "cla_vbc_mag_dip_02": [
+      "Dipole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.200981,
+        "angle": 0.13169935,
+        "k1": 0.0,
+        "dipole_e1": 0.13169935,
+        "dipole_e2": 0.0,
+        "tilt": 0.0,
+        "gap": 0.032,
+        "gap_exit": 0.0,
+        "fringe_integral": 0.5,
+        "fringe_integral_exit": 0.0,
+        "fringe_at": "both",
+        "fringe_type": "second_order_edge",
+        "metadata": {}
+      }
+    ],
+    "vbc_drift_2": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2978332027472588,
+        "metadata": {}
+      }
+    ],
+    "cla_vbc_mag_vcor_01": [
+      "CombinedCorrector",
+      {
+        "length": 0.05,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "vbc_drift_3": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0407480000000007,
+        "metadata": {}
+      }
+    ],
+    "cla_vbc_dia_bpm_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "vbc_drift_4": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0454520000000009,
+        "metadata": {}
+      }
+    ],
+    "cla_vbc_dia_rcol_01": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.48,
+        "metadata": {}
+      }
+    ],
+    "vbc_drift_5": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0255000000000045,
+        "metadata": {}
+      }
+    ],
+    "cla_vbc_dia_scr_01": [
+      "Screen",
+      {
+        "resolution": [
+          1920,
+          1200
+        ],
+        "pixel_size": [
+          6.499999926745659e-06,
+          6.499999926745659e-06
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "vbc_drift_6": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.3605444999999996,
+        "metadata": {}
+      }
+    ],
+    "cla_vbc_mag_dip_03": [
+      "Dipole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.200981,
+        "angle": 0.13169935,
+        "k1": 0.0,
+        "dipole_e1": 0.0,
+        "dipole_e2": 0.13169935,
+        "tilt": 0.0,
+        "gap": 0.032,
+        "gap_exit": 0.0,
+        "fringe_integral": 0.5,
+        "fringe_integral_exit": 0.0,
+        "fringe_at": "both",
+        "fringe_type": "second_order_edge",
+        "metadata": {}
+      }
+    ],
+    "vbc_drift_7": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 1.5067473818525952,
+        "metadata": {}
+      }
+    ],
+    "cla_vbc_mag_dip_04": [
+      "Dipole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.200981,
+        "angle": -0.13169935,
+        "k1": 0.0,
+        "dipole_e1": -0.13169935,
+        "dipole_e2": 0.0,
+        "tilt": 0.0,
+        "gap": 0.032,
+        "gap_exit": 0.0,
+        "fringe_integral": 0.5,
+        "fringe_integral_exit": 0.0,
+        "fringe_at": "both",
+        "fringe_type": "second_order_edge",
+        "metadata": {}
+      }
+    ],
+    "vbc_drift_8": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1028234191855588,
+        "metadata": {}
+      }
+    ],
+    "cla_vbc_sim_mark_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_s06_sim_mark_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_s06_sim_aper_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s06_drift_1": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.3150000000000013,
+        "metadata": {}
+      }
+    ],
+    "cla_s06_mag_hvcor_01": [
+      "CombinedCorrector",
+      {
+        "length": 0.05,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "s06_drift_2": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0351880000000016,
+        "metadata": {}
+      }
+    ],
+    "cla_s06_dia_bpm_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s06_drift_3": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1099999999999994,
+        "metadata": {}
+      }
+    ],
+    "cla_s06_mag_quad_01": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": 1.713045638990826,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s06_drift_4": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1760000000000019,
+        "metadata": {}
+      }
+    ],
+    "cla_s06_dia_bam_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s06_drift_5": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2895619999999966,
+        "metadata": {}
+      }
+    ],
+    "cla_s06_dia_eom_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s06_drift_6": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2444380000000024,
+        "metadata": {}
+      }
+    ],
+    "cla_s06_mag_quad_02": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": -0.23581195002099323,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s06_drift_7": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1372459999999975,
+        "metadata": {}
+      }
+    ],
+    "cla_s06_dia_scr_01": [
+      "Screen",
+      {
+        "resolution": [
+          1200,
+          1920
+        ],
+        "pixel_size": [
+          2.337099977012258e-05,
+          2.337099977012258e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s06_drift_8": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.8927660000000017,
+        "metadata": {}
+      }
+    ],
+    "cla_s06_mag_hvcor_02": [
+      "CombinedCorrector",
+      {
+        "length": 0.05,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "s06_drift_9": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.061478000000001,
+        "metadata": {}
+      }
+    ],
+    "cla_s06_dia_bpm_02": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s06_drift_10": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0557999999999978,
+        "metadata": {}
+      }
+    ],
+    "cla_s06_dia_scr_02": [
+      "Screen",
+      {
+        "resolution": [
+          1920,
+          1200
+        ],
+        "pixel_size": [
+          1.2143000276410021e-05,
+          1.2143000276410021e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s06_drift_11": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1327220000000011,
+        "metadata": {}
+      }
+    ],
+    "cla_s06_sim_mark_02": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_l04_sim_aper_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "l04_drift_1": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1148899908608209,
+        "metadata": {}
+      }
+    ],
+    "cla_l04_lin_cav_01": [
+      "Cavity",
+      {
+        "length": 4.06667,
+        "voltage": 93375807.47828746,
+        "phase": 45.0,
+        "frequency": 2998500000.0,
+        "cavity_type": "standing_wave",
+        "metadata": {}
+      }
+    ],
+    "cla_s07_sim_start_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_sim_aper_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_1": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1051879999999983,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_dia_bpm_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_2": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2554990000000004,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_mag_hvcor_01": [
+      "CombinedCorrector",
+      {
+        "length": 0.05,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_3": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0995010000000036,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_mag_quad_01": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": 5.083410056917371,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_4": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0998119999999929,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_sim_mark_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_5": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2001879999999972,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_mag_quad_02": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": -5.361071292905453,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_6": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2049999999999983,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_dia_bpm_02": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_7": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2054760000000044,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_mag_hvcor_02": [
+      "CombinedCorrector",
+      {
+        "length": 0.05,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_8": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0928129999999996,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_dia_scr_01": [
+      "Screen",
+      {
+        "resolution": [
+          1200,
+          1920
+        ],
+        "pixel_size": [
+          2.3196000256575644e-05,
+          2.3196000256575644e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_9": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0765230000000017,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_sim_tdc_01_aper": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_10": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.3466999999999984,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_dia_tdc_01": [
+      "TransverseDeflectingCavity",
+      {
+        "length": 0.45,
+        "voltage": 0.0,
+        "phase": 0.0,
+        "frequency": 0.0,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_11": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.303299999999993,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_sim_aper_02": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_12": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1000000000000014,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_mag_hvcor_03": [
+      "CombinedCorrector",
+      {
+        "length": 0.05,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_13": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0501880000000057,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_dia_bpm_03": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_14": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0999999999999943,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_mag_quad_03": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": 0.6327283153248837,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_15": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.5999999999999943,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_mag_quad_04": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": -0.29579167152895103,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_16": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2049999999999983,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_dia_bpm_04": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_17": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1482889999999984,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_dia_scr_02": [
+      "Screen",
+      {
+        "resolution": [
+          1920,
+          1200
+        ],
+        "pixel_size": [
+          1.2614000297617167e-05,
+          1.2614000297617167e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_18": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1767109999999974,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_mag_quad_05": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": -0.07259860078251762,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_19": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1705400000000026,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_mag_hvcor_04": [
+      "CombinedCorrector",
+      {
+        "length": 0.05,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_20": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1664719999999988,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_dia_cdr_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_21": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2129599999999954,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_mag_quad_06": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": -0.2359570657952807,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_22": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1938400000000016,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_dcp_scr_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_23": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.5959999999999965,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_sim_aper_03": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_24": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1051599999999979,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_dia_bpm_05": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_25": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2049999999999983,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_mag_quad_07": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": -0.8181127414115317,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_26": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1243400000000037,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_mag_hvcor_05": [
+      "CombinedCorrector",
+      {
+        "length": 0.05,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_27": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.8109999999999999,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_mag_hvcor_06": [
+      "CombinedCorrector",
+      {
+        "length": 0.05,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_28": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2496679999999998,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_dia_bpm_06": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_29": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1679549999999992,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_dia_scr_03": [
+      "Screen",
+      {
+        "resolution": [
+          1200,
+          1920
+        ],
+        "pixel_size": [
+          2.3938000595080666e-05,
+          2.3938000595080666e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_30": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0768770000000032,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_sim_mark_02": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_31": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1999999999999957,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_mag_quad_08": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": 3.344373142504593,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_32": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.3939999999999912,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_mag_quad_09": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": 6.097510141493699,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_33": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2508330000000001,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_dia_bpm_07": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_34": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0148329999999959,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_mag_hvcor_07": [
+      "CombinedCorrector",
+      {
+        "length": 0.05,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_35": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1131329999999977,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_dia_scr_04": [
+      "Screen",
+      {
+        "resolution": [
+          1920,
+          1200
+        ],
+        "pixel_size": [
+          1.2643999980355147e-05,
+          1.2643999980355147e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "s07_febe_drift_36": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2308669999999964,
+        "metadata": {}
+      }
+    ],
+    "cla_s07_mag_quad_10": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": -12.44063809404833,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_sim_start_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_sim_aper_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_1": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_dip_01": [
+      "Dipole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2,
+        "angle": -0.2443460953,
+        "k1": 0.0,
+        "dipole_e1": -0.1221730476,
+        "dipole_e2": -0.1221730476,
+        "tilt": 0.0,
+        "gap": 0.032,
+        "gap_exit": 0.0,
+        "fringe_integral": 0.5,
+        "fringe_integral_exit": 0.0,
+        "fringe_at": "both",
+        "fringe_type": "second_order_edge",
+        "metadata": {}
+      }
+    ],
+    "fea_drift_2": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_sim_dip_01_end": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_sim_aper_02": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_3": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.6349921390302976,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_quad_01": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": 12.691929092308726,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_4": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.399999359538727,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_quad_02": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": -10.243323113985994,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_5": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1200120202045146,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_hvcor_01": [
+      "CombinedCorrector",
+      {
+        "length": 0.2,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_6": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2499966813122044,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_dia_bpm_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_7": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.3649403863554271,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_dia_scr_01": [
+      "Screen",
+      {
+        "resolution": [
+          1920,
+          1200
+        ],
+        "pixel_size": [
+          2.2436999643105082e-05,
+          2.2436999643105082e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_8": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2950507606981713,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_quad_03": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": 9.768200624705074,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_9": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.064658206593295,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_sext_01": [
+      "Sextupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1,
+        "k2": 0.0,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_10": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2353421232470032,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_quad_04": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": -8.652591230449003,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_11": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2000484735564299,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_dia_bpm_02": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_12": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1949517062529658,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_sim_aper_03": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_13": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_dip_02": [
+      "Dipole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2,
+        "angle": -0.2443460953,
+        "k1": 0.0,
+        "dipole_e1": -0.1221730476,
+        "dipole_e2": -0.1221730476,
+        "tilt": 0.0,
+        "gap": 0.032,
+        "gap_exit": 0.0,
+        "fringe_integral": 0.5,
+        "fringe_integral_exit": 0.0,
+        "fringe_at": "both",
+        "fringe_type": "second_order_edge",
+        "metadata": {}
+      }
+    ],
+    "fea_drift_14": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_sim_dip_02_end": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_sim_aper_04": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_15": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.6349996024808664,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_quad_05": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": 7.987112265230727,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_16": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.399999675747198,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_quad_06": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": -4.48390503343364,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_17": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1350280677171487,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_hvcor_02": [
+      "CombinedCorrector",
+      {
+        "length": 0.2,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_18": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2499662280894567,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_dia_bpm_03": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_19": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.3499620638679097,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_dia_scr_02": [
+      "Screen",
+      {
+        "resolution": [
+          1200,
+          1920
+        ],
+        "pixel_size": [
+          2.3316000806516968e-05,
+          2.3316000806516968e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_20": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2950440388205262,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_quad_07": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": 8.634554157308752,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_21": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.4000001452192168,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_quad_08": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": -8.252355119345038,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_22": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2000437323902162,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_dia_bpm_04": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_23": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1949563157711273,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_sim_aper_05": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_24": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_dip_03": [
+      "Dipole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2,
+        "angle": 0.2443460953,
+        "k1": 0.0,
+        "dipole_e1": 0.1221730476,
+        "dipole_e2": 0.1221730476,
+        "tilt": 0.0,
+        "gap": 0.032,
+        "gap_exit": 0.0,
+        "fringe_integral": 0.5,
+        "fringe_integral_exit": 0.0,
+        "fringe_at": "both",
+        "fringe_type": "second_order_edge",
+        "metadata": {}
+      }
+    ],
+    "fea_drift_25": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_sim_dip_03_end": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_sim_aper_06": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_26": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.6349999013954275,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_quad_09": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": 13.430533398103464,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_27": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.400000329834454,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_quad_10": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": -8.218519221751702,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_28": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1349826413440851,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_hvcor_03": [
+      "CombinedCorrector",
+      {
+        "length": 0.2,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_29": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2499970563027307,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_dia_bpm_05": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_30": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2457457627076796,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_dia_col_03_scr": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_dia_rcol_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_31": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0999999975569086,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_dia_scr_03": [
+      "Screen",
+      {
+        "resolution": [
+          1920,
+          1200
+        ],
+        "pixel_size": [
+          2.4373999622184783e-05,
+          2.4373999622184783e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_32": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.299274390664533,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_quad_11": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": 7.961992279331418,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_33": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0546210084411201,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_sext_02": [
+      "Sextupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1,
+        "k2": 0.0,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_34": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.245378351205654,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_quad_12": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": 0.4892083206939441,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_35": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1999727138339798,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_dia_bpm_06": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_36": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1950274659732473,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_sim_aper_07": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_37": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_dip_04": [
+      "Dipole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2,
+        "angle": 0.2443460953,
+        "k1": 0.0,
+        "dipole_e1": 0.1221730476,
+        "dipole_e2": 0.1221730476,
+        "tilt": 0.0,
+        "gap": 0.032,
+        "gap_exit": 0.0,
+        "fringe_integral": 0.5,
+        "fringe_integral_exit": 0.0,
+        "fringe_at": "both",
+        "fringe_type": "second_order_edge",
+        "metadata": {}
+      }
+    ],
+    "fea_drift_38": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_sim_dip_04_end": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_sim_aper_08": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_39": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.3110210000000038,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_dia_bam_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_40": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.3239789999999942,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_quad_13": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": 19.99822455723843,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_41": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1999999999999957,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_dia_bpm_07": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_42": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2000000000000028,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_quad_14": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": -8.034766407589087,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_43": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2145209999999978,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_dia_ict_01": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_44": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2587089999999961,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_dia_scr_04": [
+      "Screen",
+      {
+        "resolution": [
+          1200,
+          1920
+        ],
+        "pixel_size": [
+          2.3331000193138607e-05,
+          2.3331000193138607e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_45": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1892700000000005,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_hvcor_04": [
+      "CombinedCorrector",
+      {
+        "length": 0.2,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_46": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1675000000007432,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_quad_15": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": -5.358964203603041,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_47": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1999999999999957,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_dia_bpm_08": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_48": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1999999999999957,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_quad_16": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.15,
+        "k1": 7.721101338080678,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_49": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0799999999999983,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_hvcor_05": [
+      "CombinedCorrector",
+      {
+        "length": 0.1,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_50": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.4545210000000068,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_mag_hvcor_06": [
+      "CombinedCorrector",
+      {
+        "length": 0.1,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_51": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1350000000000051,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_dia_bpm_09": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fea_drift_52": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1758000000000024,
+        "metadata": {}
+      }
+    ],
+    "cla_fea_ps_shtr_01": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.32,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_sim_wall_01_start": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fmb1_drift_1": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 1.591000000000001,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_sim_wall_01_end": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fmb1_drift_2": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1881599999999963,
+        "metadata": {}
+      }
+    ],
+    "cla_fmb1_sim_start_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fmb1_drift_3": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2399999999999949,
+        "metadata": {}
+      }
+    ],
+    "cla_fmb1_opt_mirror_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fmb1_drift_4": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.7400000000000091,
+        "metadata": {}
+      }
+    ],
+    "cla_fmb1_sim_end_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_dia_bpm_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "feh1_drift_1": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1140000000000043,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_mag_quad_01": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.277,
+        "k1": -7.539656814310917,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_mag_hvcor_01": [
+      "CombinedCorrector",
+      {
+        "length": 0.0,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "feh1_drift_2": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0255000000000081,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_mag_quad_02": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.277,
+        "k1": 14.57788102477056,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "feh1_drift_3": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 1.42e-14,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_mag_hvcor_02": [
+      "CombinedCorrector",
+      {
+        "length": 0.0,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "feh1_drift_4": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0775299999999959,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_dia_scr_01": [
+      "Screen",
+      {
+        "resolution": [
+          1920,
+          1200
+        ],
+        "pixel_size": [
+          1.1641000128292944e-05,
+          1.1641000128292944e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_fec1_sim_start_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fec1_drift_1": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.9080000000000013,
+        "metadata": {}
+      }
+    ],
+    "cla_fec1_dia_ecol_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fec1_drift_2": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0125000000000028,
+        "metadata": {}
+      }
+    ],
+    "cla_fec1_sim_focus_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_plasma_mark_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fec1_drift_3": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_plasma_01": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.01,
+        "metadata": {}
+      }
+    ],
+    "fec1_drift_4": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_plasma_mark_02": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fec1_drift_5": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0,
+        "metadata": {}
+      }
+    ],
+    "cla_fec1_dia_ecol_02": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fec1_drift_6": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.913000000000011,
+        "metadata": {}
+      }
+    ],
+    "cla_fec1_sim_end_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_dia_scr_02": [
+      "Screen",
+      {
+        "resolution": [
+          1920,
+          1200
+        ],
+        "pixel_size": [
+          1.1783999980252702e-05,
+          1.1783999980252702e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "feh2_drift_1": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0804600000000164,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_mag_quad_03": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.277,
+        "k1": 7.800671480144403,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "feh2_drift_2": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_mag_hvcor_03": [
+      "CombinedCorrector",
+      {
+        "length": 0.0,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "feh2_drift_3": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0255000000000081,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_mag_quad_04": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.277,
+        "k1": -6.269079422382671,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "feh2_drift_4": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 2.84e-14,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_mag_hvcor_04": [
+      "CombinedCorrector",
+      {
+        "length": 0.0,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "feh2_drift_5": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1289999999999907,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_dia_bpm_02": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_fmb2_sim_middle_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fmb2_drift_1": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2674999999999983,
+        "metadata": {}
+      }
+    ],
+    "cla_fmb2_opt_mirror_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fmb2_drift_2": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2449999999999904,
+        "metadata": {}
+      }
+    ],
+    "cla_fmb2_sim_end_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_dia_ict_01": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0,
+        "metadata": {}
+      }
+    ],
+    "feh3_drift_1": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0542999999999978,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_dia_bpm_03": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "feh3_drift_2": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0294999999999988,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_mag_quad_05": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.277,
+        "k1": -6.269079422382671,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "feh3_drift_3": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 1.42e-14,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_mag_hvcor_05": [
+      "CombinedCorrector",
+      {
+        "length": 0.0,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "feh3_drift_4": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0255000000000081,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_mag_quad_06": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.277,
+        "k1": 7.800671480144403,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_mag_hvcor_06": [
+      "CombinedCorrector",
+      {
+        "length": 0.0,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "feh3_drift_5": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0775299999999959,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_dia_scr_03": [
+      "Screen",
+      {
+        "resolution": [
+          1920,
+          1200
+        ],
+        "pixel_size": [
+          2.1198000467848033e-05,
+          2.1198000467848033e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "feh3_drift_6": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.034,
+        "metadata": {}
+      }
+    ],
+    "feh3_drift_7": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0255000000000081,
+        "metadata": {}
+      }
+    ],
+    "feh3_drift_8": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 2.84e-14,
+        "metadata": {}
+      }
+    ],
+    "feh3_drift_9": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1289999999999907,
+        "metadata": {}
+      }
+    ],
+    "cla_fec2_sim_start_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fec2_drift_1": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.9204999999999898,
+        "metadata": {}
+      }
+    ],
+    "cla_fec2_sim_focus_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fec2_drift_2": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.920500000000004,
+        "metadata": {}
+      }
+    ],
+    "cla_fec2_sim_end_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_dia_scr_04": [
+      "Screen",
+      {
+        "resolution": [
+          1920,
+          1200
+        ],
+        "pixel_size": [
+          2.095099989674054e-05,
+          2.095099989674054e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "feh4_drift_1": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0804899999999975,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_mag_quad_07": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.277,
+        "k1": 8.059498194945848,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "feh4_drift_2": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 1.42e-14,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_mag_hvcor_07": [
+      "CombinedCorrector",
+      {
+        "length": 0.0,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "feh4_drift_3": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0255000000000081,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_mag_quad_08": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.277,
+        "k1": -6.415375451263537,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_mag_hvcor_08": [
+      "CombinedCorrector",
+      {
+        "length": 0.0,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "feh4_drift_4": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1476724999999988,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_dia_bpm_04": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "feh4_drift_5": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0481725000000068,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_sim_wall_02_start": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "feh4_drift_6": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 1.5909949999999924,
+        "metadata": {}
+      }
+    ],
+    "cla_feh_sim_wall_02_end": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "cla_fed_mag_quad_01": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.21,
+        "k1": -2.050664285714286,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "fed_drift_1": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1337,
+        "metadata": {}
+      }
+    ],
+    "cla_fed_ps_shtr_01": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.32,
+        "metadata": {}
+      }
+    ],
+    "fed_drift_2": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2901,
+        "metadata": {}
+      }
+    ],
+    "cla_fed_mag_quad_02": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.21,
+        "k1": 2.455326666666667,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "fed_drift_3": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.039999999999992,
+        "metadata": {}
+      }
+    ],
+    "cla_fed_mag_hvcor_01": [
+      "CombinedCorrector",
+      {
+        "length": 0.1,
+        "horizontal_angle": 0.0,
+        "vertical_angle": 0.0,
+        "metadata": {}
+      }
+    ],
+    "fed_drift_4": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1467999999999989,
+        "metadata": {}
+      }
+    ],
+    "cla_fed_dia_bpm_01": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fed_drift_5": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.2632100000000008,
+        "metadata": {}
+      }
+    ],
+    "cla_fed_dia_scr_01": [
+      "Screen",
+      {
+        "resolution": [
+          1920,
+          1200
+        ],
+        "pixel_size": [
+          1.0634000318532344e-05,
+          1.0634000318532344e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fed_drift_6": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.4501,
+        "metadata": {}
+      }
+    ],
+    "cla_fed_mag_dip_01": [
+      "Dipole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.5,
+        "angle": 0.3490658402442932,
+        "k1": 0.0,
+        "dipole_e1": 0.1745329201221466,
+        "dipole_e2": 0.1745329201221466,
+        "tilt": 0.0,
+        "gap": 0.032,
+        "gap_exit": 0.0,
+        "fringe_integral": 0.5,
+        "fringe_integral_exit": 0.0,
+        "fringe_at": "both",
+        "fringe_type": "second_order_edge",
+        "metadata": {}
+      }
+    ],
+    "fed_drift_7": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.4077,
+        "metadata": {}
+      }
+    ],
+    "cla_fed_dia_bpm_02": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fed_drift_8": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.373317819856863,
+        "metadata": {}
+      }
+    ],
+    "cla_fed_mag_quad_03": [
+      "Quadrupole",
+      {
+        "tracking_method": "second_order",
+        "length": 0.277,
+        "k1": 1.2789447653429602,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "tilt": 0.0,
+        "num_steps": 1,
+        "metadata": {}
+      }
+    ],
+    "fed_drift_9": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.8575455130573845,
+        "metadata": {}
+      }
+    ],
+    "cla_fed_dia_scr_02": [
+      "Screen",
+      {
+        "resolution": [
+          1920,
+          1200
+        ],
+        "pixel_size": [
+          4.5345001126406714e-05,
+          4.5345001126406714e-05
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "fed_drift_10": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.7250563093251531,
+        "metadata": {}
+      }
+    ],
+    "cla_fed_sim_dump_01_start": [
+      "Screen",
+      {
+        "resolution": [
+          1024,
+          1024
+        ],
+        "pixel_size": [
+          0.0010000000474974513,
+          0.0010000000474974513
+        ],
+        "binning": 1,
+        "misalignment": [
+          0.0,
+          0.0
+        ],
+        "method": "cloud-in-cell",
+        "kde_bandwidth": 0.0010000000474974513,
+        "is_active": true,
+        "metadata": {}
+      }
+    ],
+    "feh_drift_new_1": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.03,
+        "metadata": {}
+      }
+    ],
+    "feh_drift_new_2": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.155,
+        "metadata": {}
+      }
+    ],
+    "feh_drift_new_3": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1885,
+        "metadata": {}
+      }
+    ],
+    "feh_drift_new_4": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1855,
+        "metadata": {}
+      }
+    ],
+    "feh_drift_new_5": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.6325,
+        "metadata": {}
+      }
+    ],
+    "feh_drift_new_6": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0402,
+        "metadata": {}
+      }
+    ],
+    "feh_drift_new_7": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.1855,
+        "metadata": {}
+      }
+    ],
+    "fed_drift_new_8": [
+      "Drift",
+      {
+        "tracking_method": "second_order",
+        "length": 0.0784,
+        "metadata": {}
+      }
+    ]
+  },
+  "lattices": {
+    "CLARA_FEBE": [
+      "ebt_inj_lsr_shut_01",
+      "ebt_inj_lsr_shut_02",
+      "hrg1_drift_1",
+      "cla_pi_lsr_shut_01",
+      "hrg1_drift_2",
+      "cla_hrg1_sim_aper_01",
+      "cla_hrg1_gun_cav_01",
+      "hrg1_drift_3",
+      "ebt_hrg1_mag_sol_01",
+      "cla_s01_sim_aper_01",
+      "s01_drift_1",
+      "cla_pi_lsr_shut_01",
+      "s01_drift_2",
+      "cla_s01_mag_hvcor_01",
+      "s01_drift_3",
+      "cla_s01_dia_wcm_01",
+      "s01_drift_4",
+      "cla_s01_mag_hvcor_02",
+      "s01_drift_5",
+      "cla_s01_dia_bpm_01",
+      "s01_drift_6",
+      "cla_s01_dia_scr_01",
+      "cla_l01_sim_aper_01",
+      "l01_drift_1",
+      "cla_l01_lin_cav_01",
+      "cla_s02_sim_aper_01",
+      "cla_s02_mag_hvcor_01",
+      "s02_drift_1",
+      "cla_s02_mag_quad_01",
+      "s02_drift_2",
+      "cla_s02_dia_bpm_01",
+      "s02_drift_3",
+      "cla_s02_mag_quad_02",
+      "s02_drift_4",
+      "cla_s02_dia_scr_01",
+      "s02_drift_5",
+      "cla_s02_mag_hvcor_02",
+      "s02_drift_6",
+      "cla_s02_dia_ecol_01",
+      "cla_s02_sim_aper_02",
+      "s02_drift_7",
+      "cla_s02_mag_hvcor_03",
+      "s02_drift_8",
+      "cla_s02_dia_scr_02",
+      "s02_drift_9",
+      "cla_s02_mag_quad_03",
+      "s02_drift_10",
+      "cla_s02_mag_quad_04",
+      "s02_drift_11",
+      "cla_s02_mag_quad_05",
+      "s02_drift_12",
+      "cla_s02_dia_bpm_02",
+      "s02_drift_13",
+      "cla_s02_dia_scr_03",
+      "s02_drift_14",
+      "cla_s02_mag_hvcor_04",
+      "cla_l02_sim_aper_01",
+      "l02_drift_1",
+      "cla_l02_lin_cav_01",
+      "l02_drift_2",
+      "cla_l02_sim_aper_02",
+      "cla_s03_sim_aper_01",
+      "s03_drift_1",
+      "cla_s03_dia_bpm_01",
+      "s03_drift_2",
+      "cla_s03_mag_quad_01",
+      "s03_drift_3",
+      "cla_s03_mag_hvcor_01",
+      "s03_drift_4",
+      "cla_s03_dia_scr_01",
+      "cla_l03_sim_aper_01",
+      "l03_drift_1",
+      "cla_l03_lin_cav_01",
+      "cla_s04_sim_aper_01",
+      "cla_s04_sim_mark_01",
+      "s04_drift_1",
+      "cla_s04_mag_hvcor_01",
+      "s04_drift_2",
+      "cla_s04_mag_quad_01",
+      "s04_drift_3",
+      "cla_s04_dia_ict_01",
+      "s04_drift_4",
+      "cla_s04_dia_bpm_01",
+      "s04_drift_5",
+      "cla_s04_mag_quad_02",
+      "s04_drift_6",
+      "cla_s04_dia_scr_01",
+      "s04_drift_7",
+      "cla_s04_mag_quad_03",
+      "s04_drift_8",
+      "cla_s04_dia_bpm_02",
+      "s04_drift_9",
+      "cla_s04_mag_quad_04",
+      "s04_drift_10",
+      "cla_s04_mag_hvcor_02",
+      "s04_drift_11",
+      "cla_s04_dia_scr_02",
+      "s04_drift_12",
+      "cla_s04_dia_scr_03",
+      "s04_drift_13",
+      "cla_s04_mag_hvcor_03",
+      "s04_drift_14",
+      "cla_s04_dia_bpm_03",
+      "s04_drift_15",
+      "cla_s04_dia_bpm_04",
+      "s04_drift_16",
+      "cla_s04_dia_scr_04",
+      "s04_drift_17",
+      "cla_s04_dia_scr_05",
+      "s04_drift_18",
+      "cla_s04_mag_quad_05",
+      "s04_drift_19",
+      "cla_s04_mag_hvcor_04",
+      "s04_drift_20",
+      "cla_s04_mag_quad_06",
+      "s04_drift_21",
+      "cla_s04_dia_bpm_05",
+      "s04_drift_22",
+      "cla_s04_mag_quad_07",
+      "s04_drift_23",
+      "cla_s04_mag_hvcor_05",
+      "s04_drift_24",
+      "cla_s04_mag_quad_08",
+      "s04_drift_25",
+      "cla_s04_dia_bpm_06",
+      "s04_drift_26",
+      "cla_s04_sim_mark_02",
+      "cla_l4h_sim_aper_01",
+      "l4h_drift_1",
+      "cla_l4h_lin_cav_01",
+      "cla_s05_sim_aper_01",
+      "s05_drift_1",
+      "cla_s05_mag_quad_01",
+      "s05_drift_2",
+      "cla_s05_dia_ict_01",
+      "s05_drift_3",
+      "cla_s05_mag_hvcor_01",
+      "s05_drift_4",
+      "cla_s05_dia_bpm_01",
+      "s05_drift_5",
+      "cla_s05_dia_scr_01",
+      "s05_drift_6",
+      "cla_s05_dia_bam_01",
+      "s05_drift_7",
+      "cla_s05_mag_quad_02",
+      "s05_drift_8",
+      "cla_s05_dia_bpm_02",
+      "s05_drift_9",
+      "cla_s05_sim_mark_01",
+      "cla_vbc_mag_dip_01",
+      "vbc_drift_1",
+      "cla_vbc_mag_dip_02",
+      "vbc_drift_2",
+      "cla_vbc_mag_vcor_01",
+      "vbc_drift_3",
+      "cla_vbc_dia_bpm_01",
+      "vbc_drift_4",
+      "cla_vbc_dia_rcol_01",
+      "vbc_drift_5",
+      "cla_vbc_dia_scr_01",
+      "vbc_drift_6",
+      "cla_vbc_mag_dip_03",
+      "vbc_drift_7",
+      "cla_vbc_mag_dip_04",
+      "vbc_drift_8",
+      "cla_vbc_sim_mark_01",
+      "cla_s06_sim_mark_01",
+      "cla_s06_sim_aper_01",
+      "s06_drift_1",
+      "cla_s06_mag_hvcor_01",
+      "s06_drift_2",
+      "cla_s06_dia_bpm_01",
+      "s06_drift_3",
+      "cla_s06_mag_quad_01",
+      "s06_drift_4",
+      "cla_s06_dia_bam_01",
+      "s06_drift_5",
+      "cla_s06_dia_eom_01",
+      "s06_drift_6",
+      "cla_s06_mag_quad_02",
+      "s06_drift_7",
+      "cla_s06_dia_scr_01",
+      "s06_drift_8",
+      "cla_s06_mag_hvcor_02",
+      "s06_drift_9",
+      "cla_s06_dia_bpm_02",
+      "s06_drift_10",
+      "cla_s06_dia_scr_02",
+      "s06_drift_11",
+      "cla_s06_sim_mark_02",
+      "cla_l04_sim_aper_01",
+      "l04_drift_1",
+      "cla_l04_lin_cav_01",
+      "cla_s07_sim_start_01",
+      "cla_s07_sim_aper_01",
+      "s07_febe_drift_1",
+      "cla_s07_dia_bpm_01",
+      "s07_febe_drift_2",
+      "cla_s07_mag_hvcor_01",
+      "s07_febe_drift_3",
+      "cla_s07_mag_quad_01",
+      "s07_febe_drift_4",
+      "cla_s07_sim_mark_01",
+      "s07_febe_drift_5",
+      "cla_s07_mag_quad_02",
+      "s07_febe_drift_6",
+      "cla_s07_dia_bpm_02",
+      "s07_febe_drift_7",
+      "cla_s07_mag_hvcor_02",
+      "s07_febe_drift_8",
+      "cla_s07_dia_scr_01",
+      "s07_febe_drift_9",
+      "cla_s07_sim_tdc_01_aper",
+      "s07_febe_drift_10",
+      "cla_s07_dia_tdc_01",
+      "s07_febe_drift_11",
+      "cla_s07_sim_aper_02",
+      "s07_febe_drift_12",
+      "cla_s07_mag_hvcor_03",
+      "s07_febe_drift_13",
+      "cla_s07_dia_bpm_03",
+      "s07_febe_drift_14",
+      "cla_s07_mag_quad_03",
+      "s07_febe_drift_15",
+      "cla_s07_mag_quad_04",
+      "s07_febe_drift_16",
+      "cla_s07_dia_bpm_04",
+      "s07_febe_drift_17",
+      "cla_s07_dia_scr_02",
+      "s07_febe_drift_18",
+      "cla_s07_mag_quad_05",
+      "s07_febe_drift_19",
+      "cla_s07_mag_hvcor_04",
+      "s07_febe_drift_20",
+      "cla_s07_dia_cdr_01",
+      "s07_febe_drift_21",
+      "cla_s07_mag_quad_06",
+      "s07_febe_drift_22",
+      "cla_s07_dcp_scr_01",
+      "s07_febe_drift_23",
+      "cla_s07_sim_aper_03",
+      "s07_febe_drift_24",
+      "cla_s07_dia_bpm_05",
+      "s07_febe_drift_25",
+      "cla_s07_mag_quad_07",
+      "s07_febe_drift_26",
+      "cla_s07_mag_hvcor_05",
+      "s07_febe_drift_27",
+      "cla_s07_mag_hvcor_06",
+      "s07_febe_drift_28",
+      "cla_s07_dia_bpm_06",
+      "s07_febe_drift_29",
+      "cla_s07_dia_scr_03",
+      "s07_febe_drift_30",
+      "cla_s07_sim_mark_02",
+      "s07_febe_drift_31",
+      "cla_s07_mag_quad_08",
+      "s07_febe_drift_32",
+      "cla_s07_mag_quad_09",
+      "s07_febe_drift_33",
+      "cla_s07_dia_bpm_07",
+      "s07_febe_drift_34",
+      "cla_s07_mag_hvcor_07",
+      "s07_febe_drift_35",
+      "cla_s07_dia_scr_04",
+      "s07_febe_drift_36",
+      "cla_s07_mag_quad_10",
+      "cla_fea_sim_start_01",
+      "cla_fea_sim_aper_01",
+      "fea_drift_1",
+      "cla_fea_mag_dip_01",
+      "fea_drift_2",
+      "cla_fea_sim_dip_01_end",
+      "cla_fea_sim_aper_02",
+      "fea_drift_3",
+      "cla_fea_mag_quad_01",
+      "fea_drift_4",
+      "cla_fea_mag_quad_02",
+      "fea_drift_5",
+      "cla_fea_mag_hvcor_01",
+      "fea_drift_6",
+      "cla_fea_dia_bpm_01",
+      "fea_drift_7",
+      "cla_fea_dia_scr_01",
+      "fea_drift_8",
+      "cla_fea_mag_quad_03",
+      "fea_drift_9",
+      "cla_fea_mag_sext_01",
+      "fea_drift_10",
+      "cla_fea_mag_quad_04",
+      "fea_drift_11",
+      "cla_fea_dia_bpm_02",
+      "fea_drift_12",
+      "cla_fea_sim_aper_03",
+      "fea_drift_13",
+      "cla_fea_mag_dip_02",
+      "fea_drift_14",
+      "cla_fea_sim_dip_02_end",
+      "cla_fea_sim_aper_04",
+      "fea_drift_15",
+      "cla_fea_mag_quad_05",
+      "fea_drift_16",
+      "cla_fea_mag_quad_06",
+      "fea_drift_17",
+      "cla_fea_mag_hvcor_02",
+      "fea_drift_18",
+      "cla_fea_dia_bpm_03",
+      "fea_drift_19",
+      "cla_fea_dia_scr_02",
+      "fea_drift_20",
+      "cla_fea_mag_quad_07",
+      "fea_drift_21",
+      "cla_fea_mag_quad_08",
+      "fea_drift_22",
+      "cla_fea_dia_bpm_04",
+      "fea_drift_23",
+      "cla_fea_sim_aper_05",
+      "fea_drift_24",
+      "cla_fea_mag_dip_03",
+      "fea_drift_25",
+      "cla_fea_sim_dip_03_end",
+      "cla_fea_sim_aper_06",
+      "fea_drift_26",
+      "cla_fea_mag_quad_09",
+      "fea_drift_27",
+      "cla_fea_mag_quad_10",
+      "fea_drift_28",
+      "cla_fea_mag_hvcor_03",
+      "fea_drift_29",
+      "cla_fea_dia_bpm_05",
+      "fea_drift_30",
+      "cla_fea_dia_col_03_scr",
+      "cla_fea_dia_rcol_01",
+      "fea_drift_31",
+      "cla_fea_dia_scr_03",
+      "fea_drift_32",
+      "cla_fea_mag_quad_11",
+      "fea_drift_33",
+      "cla_fea_mag_sext_02",
+      "fea_drift_34",
+      "cla_fea_mag_quad_12",
+      "fea_drift_35",
+      "cla_fea_dia_bpm_06",
+      "fea_drift_36",
+      "cla_fea_sim_aper_07",
+      "fea_drift_37",
+      "cla_fea_mag_dip_04",
+      "fea_drift_38",
+      "cla_fea_sim_dip_04_end",
+      "cla_fea_sim_aper_08",
+      "fea_drift_39",
+      "cla_fea_dia_bam_01",
+      "fea_drift_40",
+      "cla_fea_mag_quad_13",
+      "fea_drift_41",
+      "cla_fea_dia_bpm_07",
+      "fea_drift_42",
+      "cla_fea_mag_quad_14",
+      "fea_drift_43",
+      "cla_fea_dia_ict_01",
+      "fea_drift_44",
+      "cla_fea_dia_scr_04",
+      "fea_drift_45",
+      "cla_fea_mag_hvcor_04",
+      "fea_drift_46",
+      "cla_fea_mag_quad_15",
+      "fea_drift_47",
+      "cla_fea_dia_bpm_08",
+      "fea_drift_48",
+      "cla_fea_mag_quad_16",
+      "fea_drift_49",
+      "cla_fea_mag_hvcor_05",
+      "fea_drift_50",
+      "cla_fea_mag_hvcor_06",
+      "fea_drift_51",
+      "cla_fea_dia_bpm_09",
+      "fea_drift_52",
+      "cla_fea_ps_shtr_01",
+      "feh_drift_new_1",
+      "cla_feh_sim_wall_01_start",
+      "fmb1_drift_1",
+      "cla_feh_sim_wall_01_end",
+      "fmb1_drift_2",
+      "cla_fmb1_sim_start_01",
+      "fmb1_drift_3",
+      "cla_fmb1_opt_mirror_01",
+      "fmb1_drift_4",
+      "cla_fmb1_sim_end_01",
+      "feh_drift_new_2",
+      "cla_feh_dia_bpm_01",
+      "feh1_drift_1",
+      "cla_feh_mag_quad_01",
+      "cla_feh_mag_hvcor_01",
+      "feh1_drift_2",
+      "cla_feh_mag_quad_02",
+      "feh1_drift_3",
+      "cla_feh_mag_hvcor_02",
+      "feh1_drift_4",
+      "cla_feh_dia_scr_01",
+      "feh_drift_new_3",
+      "cla_fec1_sim_start_01",
+      "fec1_drift_1",
+      "cla_fec1_dia_ecol_01",
+      "fec1_drift_2",
+      "cla_fec1_sim_focus_01",
+      "cla_feh_plasma_mark_01",
+      "fec1_drift_3",
+      "cla_feh_plasma_01",
+      "fec1_drift_4",
+      "cla_feh_plasma_mark_02",
+      "fec1_drift_5",
+      "cla_fec1_dia_ecol_02",
+      "fec1_drift_6",
+      "cla_fec1_sim_end_01",
+      "feh_drift_new_4",
+      "cla_feh_dia_scr_02",
+      "feh2_drift_1",
+      "cla_feh_mag_quad_03",
+      "feh2_drift_2",
+      "cla_feh_mag_hvcor_03",
+      "feh2_drift_3",
+      "cla_feh_mag_quad_04",
+      "feh2_drift_4",
+      "cla_feh_mag_hvcor_04",
+      "feh2_drift_5",
+      "cla_feh_dia_bpm_02",
+      "feh_drift_new_5",
+      "cla_fmb2_sim_middle_01",
+      "fmb2_drift_1",
+      "cla_fmb2_opt_mirror_01",
+      "fmb2_drift_2",
+      "cla_fmb2_sim_end_01",
+      "feh_drift_new_6",
+      "cla_feh_dia_ict_01",
+      "feh3_drift_1",
+      "cla_feh_dia_bpm_03",
+      "feh3_drift_2",
+      "cla_feh_mag_quad_05",
+      "feh3_drift_3",
+      "cla_feh_mag_hvcor_05",
+      "feh3_drift_4",
+      "cla_feh_mag_quad_06",
+      "cla_feh_mag_hvcor_06",
+      "feh3_drift_5",
+      "cla_feh_dia_scr_03",
+      "feh3_drift_6",
+      "feh3_drift_7",
+      "feh3_drift_8",
+      "feh3_drift_9",
+      "cla_fec2_sim_start_01",
+      "fec2_drift_1",
+      "cla_fec2_sim_focus_01",
+      "fec2_drift_2",
+      "cla_fec2_sim_end_01",
+      "feh_drift_new_7",
+      "cla_feh_dia_scr_04",
+      "feh4_drift_1",
+      "cla_feh_mag_quad_07",
+      "feh4_drift_2",
+      "cla_feh_mag_hvcor_07",
+      "feh4_drift_3",
+      "cla_feh_mag_quad_08",
+      "cla_feh_mag_hvcor_08",
+      "feh4_drift_4",
+      "cla_feh_dia_bpm_04",
+      "feh4_drift_5",
+      "cla_feh_sim_wall_02_start",
+      "feh4_drift_6",
+      "cla_feh_sim_wall_02_end",
+      "fed_drift_new_8",
+      "cla_fed_mag_quad_01",
+      "fed_drift_1",
+      "cla_fed_ps_shtr_01",
+      "fed_drift_2",
+      "cla_fed_mag_quad_02",
+      "fed_drift_3",
+      "cla_fed_mag_hvcor_01",
+      "fed_drift_4",
+      "cla_fed_dia_bpm_01",
+      "fed_drift_5",
+      "cla_fed_dia_scr_01",
+      "fed_drift_6",
+      "cla_fed_mag_dip_01",
+      "fed_drift_7",
+      "cla_fed_dia_bpm_02",
+      "fed_drift_8",
+      "cla_fed_mag_quad_03",
+      "fed_drift_9",
+      "cla_fed_dia_scr_02",
+      "fed_drift_10",
+      "cla_fed_sim_dump_01_start"
+    ]
+  }
+}
